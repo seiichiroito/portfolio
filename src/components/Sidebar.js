@@ -11,7 +11,10 @@ const Sidebar = ({ toggleSidebar, isOpen }) => {
         <FaTimesCircle />
       </button>
       <div className="sidebar-container">
-        <NavLinks styleClass={`${isOpen ? "sidebar-links" : ""}`} />
+        <NavLinks
+          styleClass={`${isOpen ? "sidebar-links" : ""}`}
+          toggleSidebar={toggleSidebar}
+        />
         <SocialLinks styleClass={`${isOpen ? "sidebar-links" : ""}`} />
       </div>
     </Wrapper>

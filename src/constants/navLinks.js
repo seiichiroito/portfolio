@@ -30,16 +30,17 @@ const data = [
   },
 ]
 
-const tempLinks = data.map(link => {
+const NavLinks = ({ styleClass, toggleSidebar }) => {
   return (
-    <li key={link.id}>
-      <Link to={link.url}>{link.text}</Link>
-    </li>
-  )
-})
-const NavLinks = ({ styleClass }) => {
-  return (
-    <Links className={`${styleClass ? styleClass : ""}`}>{tempLinks}</Links>
+    <Links className={`${styleClass ? styleClass : ""}`}>
+      {data.map(link => {
+        return (
+          <li key={link.id} onClick={toggleSidebar}>
+            <Link to={link.url}>{link.text}</Link>
+          </li>
+        )
+      })}
+    </Links>
   )
 }
 
