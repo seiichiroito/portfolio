@@ -1,6 +1,8 @@
 import React from "react"
 import styled from "styled-components"
 import { FaTimesCircle } from "react-icons/fa"
+import NavLinks from "../constants/navLinks"
+import SocialLinks from "../constants/socialLinks"
 
 const Sidebar = ({ toggleSidebar, isOpen }) => {
   return (
@@ -9,8 +11,8 @@ const Sidebar = ({ toggleSidebar, isOpen }) => {
         <FaTimesCircle />
       </button>
       <div className="sidebar-container">
-        <div>menus</div>
-        <div>Links</div>
+        <NavLinks styleClass={`${isOpen ? "sidebar-links" : ""}`} />
+        <SocialLinks styleClass={`${isOpen ? "sidebar-links" : ""}`} />
       </div>
     </Wrapper>
   )

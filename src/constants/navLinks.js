@@ -46,6 +46,7 @@ const NavLinks = ({ styleClass }) => {
 const Links = styled.ul`
   display: flex;
   height: 100%;
+  font-size: var(--fz-body);
   &.header-links {
     display: none;
     @media (min-width: 768px) {
@@ -64,6 +65,52 @@ const Links = styled.ul`
     &:hover {
       background-color: var(--primary-5);
       color: var(--white);
+    }
+  }
+  &.sidebar-links {
+    flex-direction: column;
+    li {
+      /* For animation */
+      opacity: 0;
+    }
+    a {
+      flex: 1;
+      text-align: center;
+      color: var(--dark);
+      font-size: var(--fz-heading-4);
+      padding: 1rem 4rem;
+      &:hover {
+        color: var(--white);
+      }
+    }
+    /* Animation */
+    li {
+      animation: slideRight 0.5s ease-in-out 0.3s forwards;
+    }
+    li:nth-of-type(1) {
+      animation-delay: 0.2s;
+    }
+    li:nth-of-type(2) {
+      animation-delay: 0.4s;
+    }
+    li:nth-of-type(3) {
+      animation-delay: 0.6s;
+    }
+    li:nth-of-type(4) {
+      animation-delay: 0.8s;
+    }
+    li:nth-of-type(5) {
+      animation-delay: 1s;
+    }
+    @keyframes slideRight {
+      0% {
+        transform: translateX(-200px);
+        opacity: 0;
+      }
+      100% {
+        transform: translateX(0);
+        opacity: 1;
+      }
     }
   }
 `
