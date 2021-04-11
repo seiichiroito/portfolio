@@ -35,8 +35,10 @@ const NavLinks = ({ styleClass, toggleSidebar }) => {
     <Links className={`${styleClass ? styleClass : ""}`}>
       {data.map(link => {
         return (
-          <li key={link.id} onClick={toggleSidebar}>
-            <Link to={link.url}>{link.text}</Link>
+          <li key={link.id}>
+            <Link to={link.url} onClick={toggleSidebar}>
+              {link.text}
+            </Link>
           </li>
         )
       })}

@@ -20,19 +20,13 @@ const Header = ({ toggleSidebar }) => {
 }
 
 const Wrapper = styled.section`
-  /* Position */
-  position: fixed;
-  top: 0;
-  left: 0;
-  z-index: 200;
-
   /* Size */
   height: var(--h-header);
   width: 100%;
 
   /* Color */
   background-color: var(--dark);
-  box-shadow: var(--dark-shadow);
+  box-shadow: var(--section-shadow);
 
   .header-container {
     display: flex;

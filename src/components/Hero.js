@@ -39,10 +39,9 @@ const Hero = () => {
 
 const Wrapper = styled.section`
   /* Position */
-  margin-top: var(--h-header);
 
   /* Size */
-  min-height: calc(80vh - var(--h-header) - var(--h-footer));
+  min-height: calc(70vh);
 
   /* Color */
   background-color: var(--light);
@@ -66,7 +65,7 @@ const Wrapper = styled.section`
     border-radius: 50%;
     width: 4rem;
     height: 4rem;
-    margin-bottom: 1rem;
+    margin-bottom: 3rem;
   }
   .header {
     margin-bottom: 1rem;

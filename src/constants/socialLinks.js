@@ -1,5 +1,4 @@
 import React from "react"
-import { Link } from "gatsby"
 import styled from "styled-components"
 import { FaTwitterSquare, FaGithubSquare, FaLinkedin } from "react-icons/fa"
 
@@ -24,7 +23,7 @@ const data = [
 const socialLinks = data.map(link => {
   return (
     <li key={link.id}>
-      <Link to={link.url}>{link.icon}</Link>
+      <a href={link.url}>{link.icon}</a>
     </li>
   )
 })
