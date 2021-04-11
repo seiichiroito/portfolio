@@ -8,7 +8,7 @@ import { Link } from "gatsby"
 const Header = ({ toggleSidebar }) => {
   return (
     <Wrapper>
-      <div className="container">
+      <div className="container header-container">
         <Link to="/" className="logo">
           <StaticImage src="../assets/images/logo.png" alt="logo" />
         </Link>
@@ -34,10 +34,7 @@ const Wrapper = styled.section`
   background-color: var(--dark);
   box-shadow: var(--dark-shadow);
 
-  .container {
-    width: 90vw;
-    max-width: 1170px;
-    margin: 0 auto;
+  .header-container {
     display: flex;
     height: 100%;
     align-items: center;

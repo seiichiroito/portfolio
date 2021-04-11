@@ -7,10 +7,8 @@ const Underline = () => {
 
 const Wrapper = styled.div`
   width: 3rem;
-  height: 0.25rem;
-  background: var(--dark);
-  margin-left: auto;
-  margin-right: auto;
+  height: 0.2rem;
+  background-color: var(--primary-5);
 `
 
 export default Underline

@@ -44,7 +44,12 @@ const Links = styled.ul`
     color: var(--dark);
   }
   .social-icon {
-    font-size: var(--fz-heading-5);
+    font-size: var(--fz-heading-4);
+  }
+  @media (min-width: 768px) {
+    .social-icon {
+      font-size: var(--fz-heading-5);
+    }
   }
   &.sidebar-links {
     margin-top: 1rem;
