@@ -11,7 +11,6 @@ const Projects = () => {
 }
 
 const Wrapper = styled.section`
-  margin-top: var(--h-header);
   min-height: calc(100vh - var(--h-header) - var(--h-footer));
 `
 

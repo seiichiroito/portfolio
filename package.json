@@ -20,13 +20,15 @@
     "gatsby-plugin-react-helmet": "^4.2.0",
     "gatsby-plugin-sharp": "^3.2.1",
     "gatsby-plugin-styled-components": "^4.2.0",
+    "gatsby-source-contentful": "^5.2.1",
     "gatsby-source-filesystem": "^3.2.0",
     "gatsby-transformer-sharp": "^3.2.0",
     "react": "^17.0.1",
     "react-dom": "^17.0.1",
     "react-helmet": "^6.1.0",
     "react-icons": "^4.2.0",
-    "styled-components": "^5.2.3"
+    "styled-components": "^5.2.3",
+    "uuid": "^3.4.0"
   },
   "devDependencies": {
     "prettier": "2.2.1"

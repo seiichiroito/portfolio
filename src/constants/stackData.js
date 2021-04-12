@@ -1,5 +1,6 @@
 // cSpell:ignore Reactos
 import React from "react"
+import { v4 as uuidv4 } from "uuid"
 
 import { BsCode } from "react-icons/bs"
 import { AiOutlineCode } from "react-icons/ai"
@@ -10,76 +11,76 @@ import { DiRuby, DiMongodb } from "react-icons/di"
 
 const stackData = [
   {
-    id: 1,
+    id: uuidv4(),
     category: "Front End",
     icon: <BsCode />,
     languages: [
       {
-        id: 1,
+        id: uuidv4(),
         language: "HTML",
         icon: <FaHtml5 />,
       },
       {
-        id: 2,
+        id: uuidv4(),
         language: "CSS",
         icon: <FaCss3Alt />,
       },
       {
-        id: 3,
+        id: uuidv4(),
         language: "Javascript",
         icon: <SiJavascript />,
       },
       {
-        id: 4,
+        id: uuidv4(),
         language: "React",
         icon: <FaReact />,
       },
     ],
   },
   {
-    id: 2,
+    id: uuidv4(),
     category: "Back End",
     icon: <AiOutlineCode />,
     languages: [
       {
-        id: 5,
+        id: uuidv4(),
         language: "NodeJS",
         icon: <FaNodeJs />,
       },
       {
-        id: 6,
+        id: uuidv4(),
         language: "Ruby",
         icon: <DiRuby />,
       },
       {
-        id: 7,
+        id: uuidv4(),
         language: "MongoDB",
         icon: <DiMongodb />,
       },
     ],
   },
   {
-    id: 3,
+    id: uuidv4(),
     category: "Others",
     icon: <RiStackLine />,
     languages: [
       {
-        id: 8,
+        id: uuidv4(),
         language: "Gatsby",
         icon: <RiGatsbyFill />,
       },
       {
-        id: 9,
+        id: uuidv4(),
         language: "Jekyll",
         icon: <SiJekyll />,
       },
       {
-        id: 10,
+        id: uuidv4(),
         language: "Ruby on Rails",
         icon: <SiRails />,
       },
       {
-        id: 11,
+        id: uuidv4(),
         language: "MERN",
         icon: <SiReactos />,
       },

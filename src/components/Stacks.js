@@ -3,7 +3,7 @@ import styled from "styled-components"
 
 import SectionHeading from "./utils/SectionHeading"
 import Stack from "./Stack"
-import stackData from "../constants/stacks"
+import stackData from "../constants/stackData"
 
 const Stacks = () => {
   return (

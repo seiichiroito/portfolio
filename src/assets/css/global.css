@@ -48,6 +48,8 @@
   /** Height & Width  **/
   --h-header: 4rem;
   --h-footer: 6rem;
+
+  --radius: 0.25rem;
 }
 
 * {

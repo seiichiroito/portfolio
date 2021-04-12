@@ -1,17 +1,46 @@
 import React from "react"
+import { graphql } from "gatsby"
+
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 import Hero from "../components/Hero"
 import Stacks from "../components/Stacks"
+import Projects from "../components/Projects"
+import Blogs from "../components/Blogs"
 
-const Home = () => {
+const Home = ({ data }) => {
+  const {
+    allContentfulProject: { nodes: projects },
+  } = data
   return (
     <Layout>
       <Seo title="Home" />
       <Hero />
       <Stacks />
+      <Projects projects={projects} />
+      <Blogs />
     </Layout>
   )
 }
 
+export const query = graphql`
+  {
+    allContentfulProject(
+      filter: { featured: { eq: true } }
+      sort: { fields: createdAt, order: ASC }
+    ) {
+      nodes {
+        description
+        title
+        tags
+        id
+        image {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+        }
+        github
+        url
+      }
+    }
+  }
+`
 export default Home
