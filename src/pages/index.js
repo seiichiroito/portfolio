@@ -11,6 +11,7 @@ import Blogs from "../components/Blogs"
 const Home = ({ data }) => {
   const {
     allContentfulProject: { nodes: projects },
+    allContentfulBlog: { nodes: blogs },
   } = data
   return (
     <Layout>
@@ -18,7 +19,7 @@ const Home = ({ data }) => {
       <Hero />
       <Stacks />
       <Projects projects={projects} />
-      <Blogs />
+      <Blogs blogs={blogs} />
     </Layout>
   )
 }
@@ -39,6 +40,18 @@ export const query = graphql`
         }
         github
         url
+      }
+    }
+    allContentfulBlog(limit: 3, sort: { fields: publishedAt, order: DESC }) {
+      nodes {
+        title
+        description
+        categories
+        id
+        publishedAt(formatString: "Do MM, YYYY")
+        image {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+        }
       }
     }
   }

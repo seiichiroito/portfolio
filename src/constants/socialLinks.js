@@ -38,6 +38,10 @@ const Links = styled.ul`
   display: flex;
   li {
     margin: 8px;
+    transition: var(--transition);
+    &:hover {
+      transform: scale(1.2);
+    }
   }
   a {
     color: var(--dark);

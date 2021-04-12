@@ -90,6 +90,12 @@ const Wrapper = styled.li`
     .links {
       display: flex;
       gap: 1rem;
+      li {
+        transition: var(--transition);
+        &:hover {
+          transform: scale(1.2);
+        }
+      }
       a {
         color: var(--dark);
         font-size: var(--fz-heading-6);

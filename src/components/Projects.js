@@ -9,7 +9,7 @@ const Projects = ({ projects }) => {
     <Wrapper>
       <div className="container projects__container">
         <SectionHeading title="Project" dark />
-        <ul className="card">
+        <ul className="project-list">
           {projects.map((project, index) => (
             <Project key={project.id} project={project} index={index} />
           ))}
@@ -26,11 +26,18 @@ const Wrapper = styled.section`
   .projects__container {
     padding: 3rem 0;
   }
-  .card {
+  .project-list {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
     margin: 2rem 0;
+    @media (min-width: 768px) {
+      li:nth-child(even) {
+        .hero {
+          order: 1;
+        }
+      }
+    }
   }
 `
 
