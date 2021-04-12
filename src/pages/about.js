@@ -3,11 +3,13 @@ import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
 
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 import Underline from "../components/utils/Underline"
 
 const About = () => {
   return (
     <Layout>
+      <Seo title="About" description="Information about website author." />
       <Wrapper>
         <div className="container about__container">
           <div className="center">

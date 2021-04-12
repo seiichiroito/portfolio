@@ -2,10 +2,15 @@ import React from "react"
 import styled from "styled-components"
 
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 
 const Contact = () => {
   return (
     <Layout>
+      <Seo
+        title="contact"
+        description="Contact form if you want to contact me"
+      />
       <Wrapper>
         <div className="container contact__container">
           <div className="contact">

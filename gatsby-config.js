@@ -8,6 +8,11 @@ require("dotenv").config({
 })
 
 module.exports = {
+  siteMetadata: {
+    title: `Seiichiro`,
+    description: `Seiichiro's Portfolio site`,
+    author: `Seiichiro Ito`,
+  },
   // For SEO
   plugins: [
     `gatsby-plugin-react-helmet`,

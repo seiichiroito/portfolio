@@ -3,6 +3,7 @@ import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 import Blogs from "../components/Blogs"
 
 const AllBlog = ({ data }) => {
@@ -11,6 +12,10 @@ const AllBlog = ({ data }) => {
   } = data
   return (
     <Layout>
+      <Seo
+        title="Blog"
+        description="A place where my thoughts are summarized."
+      />
       <Wrapper>
         <div className="container blog__container">
           <Blogs blogs={blogs} title="Blog" />

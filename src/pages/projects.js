@@ -1,8 +1,9 @@
 import React from "react"
 import { graphql } from "gatsby"
-
 import styled from "styled-components"
+
 import Layout from "../components/Layout"
+import Seo from "../components/Seo"
 import Projects from "../components/Projects"
 
 const AllProjects = ({ data }) => {
@@ -11,6 +12,10 @@ const AllProjects = ({ data }) => {
   } = data
   return (
     <Layout>
+      <Seo
+        title="Projects"
+        description="showcase of products made by Seiichiro"
+      />
       <Wrapper>
         <div className="container">
           <Projects projects={projects} title="All Projects" />
