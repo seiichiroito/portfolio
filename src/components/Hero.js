@@ -61,8 +61,6 @@ const Wrapper = styled.section`
     }
   }
   .avatar-icon {
-    background-color: var(--primary-5);
-    border-radius: 50%;
     width: 4rem;
     height: 4rem;
     margin-bottom: 3rem;

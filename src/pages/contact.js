@@ -27,11 +27,12 @@ const Contact = () => {
               <button type="submit">Submit</button>
             </form>
             <footer className="footer">
+              <p>* I'll response to a given email within 2 ~ 3 days.</p>
+              <p>* You can also contact me through below sns.</p>
               <p>
                 * I use <a href="https://formspree.io/">Formspress</a> for this
                 form.
               </p>
-              <p>* I'll response to a given email within 2 ~ 3 days.</p>
             </footer>
           </div>
         </div>
