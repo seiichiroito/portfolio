@@ -44,7 +44,7 @@ const Wrapper = styled.section`
   min-height: calc(70vh);
 
   /* Color */
-  background-color: var(--light);
+  background-color: var(--white);
 
   /* Child */
   display: flex;

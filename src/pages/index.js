@@ -18,7 +18,7 @@ const Home = ({ data }) => {
       <Seo title="Home" />
       <Hero />
       <Stacks />
-      <Projects projects={projects} />
+      <Projects projects={projects} title="Project" showLink />
       <Blogs blogs={blogs} />
     </Layout>
   )

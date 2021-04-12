@@ -36,6 +36,7 @@ const About = () => {
 const Wrapper = styled.section`
   min-height: calc(100vh - var(--h-header) - var(--h-footer));
   display: flex;
+  background-color: var(--white);
   .about__container {
     display: flex;
     align-items: center;

@@ -43,7 +43,7 @@ const Contact = () => {
 
 const Wrapper = styled.section`
   min-height: calc(100vh - var(--h-header) - var(--h-footer));
-  background-color: var(--light);
+  background-color: var(--white);
   display: flex;
   .contact__container {
     display: flex;
@@ -55,6 +55,7 @@ const Wrapper = styled.section`
     max-width: 560px;
     background-color: var(--white);
     padding: 1rem;
+    box-shadow: var(--dark-shadow);
   }
   .header {
     text-align: center;
