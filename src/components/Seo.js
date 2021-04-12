@@ -74,7 +74,13 @@ const SEO = ({ title, description }) => {
           content: siteUrl + image,
         },
       ]}
-    ></Helmet>
+    >
+      <script
+        data-ad-client="ca-pub-2160447206289701"
+        async
+        src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
+      ></script>
+    </Helmet>
   )
 }
 export default SEO
