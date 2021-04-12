@@ -1,19 +1,48 @@
 import React from "react"
+import { graphql } from "gatsby"
 import styled from "styled-components"
 
 import Layout from "../components/Layout"
+import Blogs from "../components/Blogs"
 
-const Blog = () => {
+const AllBlog = ({ data }) => {
+  const {
+    allContentfulBlog: { nodes: blogs },
+  } = data
   return (
     <Layout>
-      <Wrapper>blog page</Wrapper>
+      <Wrapper>
+        <div className="container blog__container">
+          <Blogs blogs={blogs} title="Blog" />
+        </div>
+      </Wrapper>
     </Layout>
   )
 }
 
 const Wrapper = styled.section`
-  margin-top: var(--h-header);
   min-height: calc(100vh - var(--h-header) - var(--h-footer));
+  background-color: var(--dark);
+  .blog__container {
+    section {
+      box-shadow: none;
+    }
+  }
 `
-
-export default Blog
+export const query = graphql`
+  {
+    allContentfulBlog(sort: { fields: publishedAt, order: DESC }) {
+      nodes {
+        title
+        description
+        categories
+        id
+        publishedAt(formatString: "Do MM, YYYY")
+        image {
+          gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+        }
+      }
+    }
+  }
+`
+export default AllBlog

@@ -19,7 +19,7 @@ const Home = ({ data }) => {
       <Hero />
       <Stacks />
       <Projects projects={projects} title="Project" showLink />
-      <Blogs blogs={blogs} />
+      <Blogs blogs={blogs} title="Latest Blog" showLink />
     </Layout>
   )
 }

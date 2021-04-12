@@ -55,7 +55,7 @@ const Wrapper = styled.section`
     max-width: 560px;
     background-color: var(--white);
     padding: 1rem;
-    box-shadow: var(--dark-shadow);
+    box-shadow: var(--light-shadow);
   }
   .header {
     text-align: center;

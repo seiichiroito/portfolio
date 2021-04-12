@@ -5,27 +5,27 @@ import styled from "styled-components"
 const data = [
   {
     id: 1,
-    text: "home",
+    text: "Home",
     url: "/",
   },
   {
     id: 2,
-    text: "about",
+    text: "About",
     url: "/about/",
   },
   {
     id: 3,
-    text: "projects",
+    text: "Projects",
     url: "/projects/",
   },
   {
     id: 4,
-    text: "blog",
+    text: "Blog",
     url: "/blog/",
   },
   {
     id: 5,
-    text: "contact",
+    text: "Contact",
     url: "/contact/",
   },
 ]

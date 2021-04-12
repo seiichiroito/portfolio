@@ -54,6 +54,7 @@ const Wrapper = styled.section`
     padding: 0.8rem 1rem;
     margin: 0 auto;
     text-decoration: none;
+    font-size: var(--fz-body);
     &:hover {
       transform: scale(1.02);
     }
