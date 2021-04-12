@@ -39,5 +39,18 @@ module.exports = {
         path: `${__dirname}/src/assets/images/`,
       },
     },
+    {
+      resolve: `gatsby-plugin-webfonts`,
+      options: {
+        fonts: {
+          google: [
+            {
+              family: "Inter",
+              variants: ["400", "700"],
+            },
+          ],
+        },
+      },
+    },
   ],
 }
