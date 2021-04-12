@@ -39,8 +39,8 @@
   /** Shadow **/
 
   --light-shadow: 0 3px 8px -2px rgba(35, 35, 35, 0.4);
-  --dark-shadow: 0 3px 8px -2px rgba(35, 35, 35, 1);
-  --section-shadow: 0 0 8px 2px rgba(35, 35, 35, 0.8);
+  --dark-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.8);
+  --section-shadow: 0 0 8px 2px rgba(0, 0, 0, 0.8);
 
   /* Transition */
   --transition: all 0.3s linear;

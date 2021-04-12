@@ -20,6 +20,9 @@ const Header = ({ toggleSidebar }) => {
 }
 
 const Wrapper = styled.section`
+  position: relative;
+  z-index: 5;
+
   /* Size */
   height: var(--h-header);
   width: 100%;
