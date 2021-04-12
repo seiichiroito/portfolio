@@ -9,9 +9,12 @@ require("dotenv").config({
 
 module.exports = {
   siteMetadata: {
-    title: `Seiichiro`,
-    description: `Seiichiro's Portfolio site`,
+    siteTitle: `Seiichiro Portfolio`,
+    siteDescription: `This is seiichiro's Portfolio site`,
     author: `Seiichiro Ito`,
+    image: "/twitter-img.png",
+    twitterUsername: "@seiichiro_dev",
+    siteUrl: "https://www.seiichiroito.com",
   },
   // For SEO
   plugins: [
