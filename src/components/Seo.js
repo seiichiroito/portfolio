@@ -70,7 +70,7 @@ const SEO = ({ title, description }) => {
           content: metaDescription,
         },
         {
-          name: "twitter:card",
+          name: "twitter:image",
           content: siteUrl + image,
         },
       ]}
