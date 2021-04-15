@@ -78,7 +78,6 @@ const Wrapper = styled.li`
     margin-top: 1rem;
     .tags {
       display: flex;
-      gap: 1rem;
       li {
         border: 1px solid var(--primary-5);
         border-radius: var(--radius);
@@ -86,15 +85,20 @@ const Wrapper = styled.li`
         color: var(--primary-5);
         font-size: var(--fz-paragraph);
       }
+      li + li {
+        margin-left: 1rem;
+      }
     }
     .links {
       display: flex;
-      gap: 1rem;
       li {
         transition: var(--transition);
         &:hover {
           transform: scale(1.2);
         }
+      }
+      li + li {
+        margin-left: 1rem;
       }
       a {
         color: var(--dark);
