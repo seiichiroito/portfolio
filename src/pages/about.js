@@ -1,3 +1,4 @@
+
 import React from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
@@ -25,7 +26,7 @@ const About = () => {
               <Underline />
               <p>
                 i'm a university student who like to think about things that
-                aren't focused generally.
+                aren't focused on generally.
               </p>
             </div>
           </div>
