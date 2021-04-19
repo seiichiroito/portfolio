@@ -10,7 +10,7 @@ const Blogs = ({ blogs, title, showLink }) => {
     <Wrapper>
       <div className="container blogs__container py-5">
         <SectionHeading title={title} />
-        {blogs.length == 0 ? (
+        {blogs.length <= 1 ? (
           <p className="no-entry my-4">There is no entry yet.</p>
         ) : (
           <ul className="blog-list my-4">
