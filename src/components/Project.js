@@ -11,17 +11,21 @@ const Project = ({ project, index }) => {
       <div className="hero">
         <GatsbyImage image={gatsbyImage} alt={project.title} />
       </div>
-      <aside>
+      <aside className="p-4">
         <div className="main">
           <h5>
             {index + 1}. {project.title}
           </h5>
-          <p>{project.description}</p>
+          <p className="mt-3">{project.description}</p>
         </div>
-        <div className="footer">
+        <div className="footer mt-3">
           <ul className="tags">
             {project.tags.map((tag, index) => {
-              return <li key={index}>{tag}</li>
+              return (
+                <li className="p-1" key={index}>
+                  {tag}
+                </li>
+              )
             })}
           </ul>
           <ul className="links">
@@ -52,7 +56,6 @@ const Wrapper = styled.li`
   display: flex;
   flex-direction: column;
   aside {
-    padding: 1.5rem;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -63,10 +66,8 @@ const Wrapper = styled.li`
     h5 {
       line-height: var(--lh-heading);
       font-size: var(--fz-heading-5);
-      margin-left: -0.25em;
     }
     p {
-      margin-top: 1rem;
       font-size: var(--fz-body);
       line-height: var(--lh-paragraph);
     }
@@ -75,30 +76,26 @@ const Wrapper = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    margin-top: 1rem;
     .tags {
-      display: flex;
+      display: grid;
+      grid-auto-flow: column;
+      gap: 1rem;
       li {
         border: 1px solid var(--primary-5);
         border-radius: var(--radius);
-        padding: 0.25rem;
         color: var(--primary-5);
         font-size: var(--fz-paragraph);
       }
-      li + li {
-        margin-left: 1rem;
-      }
     }
     .links {
-      display: flex;
+      display: grid;
+      gap: 1rem;
+      grid-auto-flow: column;
       li {
         transition: var(--transition);
         &:hover {
           transform: scale(1.2);
         }
-      }
-      li + li {
-        margin-left: 1rem;
       }
       a {
         color: var(--dark);

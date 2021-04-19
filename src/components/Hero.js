@@ -8,7 +8,7 @@ import SocialLinks from "../constants/socialLinks"
 const Hero = () => {
   return (
     <Wrapper>
-      <div className="container hero__container">
+      <div className="container hero__container px-4">
         <div className="main">
           <div className="avatar">
             <StaticImage
@@ -16,13 +16,13 @@ const Hero = () => {
               alt="avatar"
               className="avatar-icon"
             />
-            <Underline />
+            <Underline styleClass="mt-3" />
           </div>
           <div className="header">
             <h1>I'm Seiichiro</h1>
-            <p>Web Developer</p>
+            <p className="mt-1">Web Developer</p>
           </div>
-          <SocialLinks />
+          <SocialLinks styleClass="mt-2" />
         </div>
         <div className="sub">
           <div></div>
@@ -55,7 +55,6 @@ const Wrapper = styled.section`
   }
   .hero__container {
     display: grid;
-    padding: 0 2rem;
     @media (min-width: 768px) {
       grid-template-columns: 3fr 1fr;
     }
@@ -63,16 +62,13 @@ const Wrapper = styled.section`
   .avatar-icon {
     width: 4rem;
     height: 4rem;
-    margin-bottom: 3rem;
   }
   .header {
-    margin-bottom: 1rem;
     h1 {
       font-size: var(--fz-heading-1);
       line-height: var(--lh-heading);
     }
     p {
-      margin-top: 0.5rem;
       font-size: var(--fz-body);
       line-height: var(--lh-body);
     }

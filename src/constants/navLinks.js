@@ -61,8 +61,8 @@ const Links = styled.ul`
     align-items: center;
   }
   a {
-    color: var(--light);
     padding: 1rem;
+    color: var(--light);
     text-decoration: none;
     transition: var(--transition);
     &:hover {

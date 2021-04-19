@@ -1,4 +1,3 @@
-
 import React from "react"
 import styled from "styled-components"
 import { StaticImage } from "gatsby-plugin-image"
@@ -21,12 +20,12 @@ const About = () => {
                 className="avatar-icon"
               />
             </div>
-            <div className="main">
+            <div className="main mt-4 mt-md-0 ms-md-4">
               <h3>About Me</h3>
               <Underline />
-              <p>
+              <p className="mt-4">
                 i'm a university student who like to think about things that
-                aren't focused on generally.
+                aren't generally focused on.
               </p>
             </div>
           </div>
@@ -61,19 +60,13 @@ const Wrapper = styled.section`
 
   .main {
     color: var(--dark);
-    margin-top: 2rem;
     h3 {
       font-size: var(--fz-heading-3);
       line-height: var(--lh-heading);
     }
     p {
-      margin-top: 1.5rem;
       font-size: var(--fz-paragraph);
       line-height: var(--lh-paragraph);
-    }
-    @media (min-width: 768px) {
-      margin-top: 0;
-      margin-left: 60px;
     }
   }
 `

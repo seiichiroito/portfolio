@@ -3,6 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
+import Underline from "./utils/Underline"
 const Blog = ({ blog }) => {
   const {
     excerpt,
@@ -17,14 +18,15 @@ const Blog = ({ blog }) => {
         <div className="hero">
           <GatsbyImage image={gatsbyImage} alt={title} />
         </div>
-        <aside>
+        <aside className="p-4">
           <div className="main">
             <h5>{title}</h5>
-            <p>{excerpt}</p>
+            <Underline styleClass="mt-1" />
+            <p className="mt-3">{excerpt}</p>
           </div>
-          <div className="footer">
+          <div className="footer mt-3">
             <ul className="categories">
-              <li>{category}</li>
+              <li className="p-1">{category}</li>
             </ul>
             <p className="date">{date}</p>
           </div>
@@ -52,7 +54,6 @@ const Wrapper = styled.li`
     display: flex;
   }
   aside {
-    padding: 1.5rem;
     flex: 1;
     background-color: var(--light);
     display: flex;
@@ -65,17 +66,15 @@ const Wrapper = styled.li`
     h5 {
       line-height: var(--lh-heading);
       font-size: var(--fz-heading-5);
-      margin-left: -0.25em;
+      font-weight: bold;
     }
     p {
-      margin-top: 1rem;
       font-size: var(--fz-body);
       line-height: var(--lh-paragraph);
     }
   }
   .footer {
     color: var(--primary-5);
-    margin-top: 1rem;
     display: flex;
     justify-content: space-between;
     align-items: center;
@@ -85,7 +84,6 @@ const Wrapper = styled.li`
       li {
         border: 1px solid var(--primary-5);
         border-radius: var(--radius);
-        padding: 0.25rem;
         color: var(--primary-5);
         font-size: var(--fz-paragraph);
         &:hover {

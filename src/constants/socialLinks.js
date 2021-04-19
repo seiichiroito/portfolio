@@ -22,7 +22,7 @@ const data = [
 
 const socialLinks = data.map(link => {
   return (
-    <li key={link.id}>
+    <li className="m-1" key={link.id}>
       <a href={link.url}>{link.icon}</a>
     </li>
   )
@@ -37,7 +37,6 @@ const SocialLinks = ({ styleClass }) => {
 const Links = styled.ul`
   display: flex;
   li {
-    margin: 8px;
     transition: var(--transition);
     &:hover {
       transform: scale(1.2);
@@ -55,7 +54,6 @@ const Links = styled.ul`
     }
   }
   &.sidebar-links {
-    margin-top: 1rem;
     justify-content: center;
     li {
       /* For animation */

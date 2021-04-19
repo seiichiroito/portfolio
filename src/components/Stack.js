@@ -3,17 +3,17 @@ import styled from "styled-components"
 
 const Stack = ({ stack }) => {
   return (
-    <Wrapper>
+    <Wrapper className="p-3">
       <div className="header">
         {stack.icon}
-        <h5>{stack.category}</h5>
+        <h5 className="ms-3">{stack.category}</h5>
       </div>
-      <ul className="stack__lists">
+      <ul className="stack__lists mt-3">
         {stack.languages.map(language => {
           return (
             <li key={language.id}>
               {language.icon}
-              <p>{language.language}</p>
+              <p className="ms-3">{language.language}</p>
             </li>
           )
         })}
@@ -25,7 +25,6 @@ const Stack = ({ stack }) => {
 const Wrapper = styled.li`
   color: var(--light);
   box-shadow: var(--dark-shadow);
-  padding: 1.5rem;
 
   .header {
     display: flex;
@@ -33,9 +32,7 @@ const Wrapper = styled.li`
     font-size: var(--fz-heading-5);
     line-height: var(--lh-heading);
   }
-  h5 {
-    margin-left: 1rem;
-  }
+
   .stack__lists {
     display: grid;
     grid-template-columns: 1fr;
@@ -43,13 +40,11 @@ const Wrapper = styled.li`
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
     }
-        }
     li {
       display: flex;
       align-items: center;
       p {
         font-size: var(--fz-body);
-        margin-left: 1rem;
         line-height: var(--lh-paragraph);
       }
     }

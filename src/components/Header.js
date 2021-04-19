@@ -10,7 +10,11 @@ const Header = ({ toggleSidebar }) => {
     <Wrapper>
       <div className="container header-container">
         <Link to="/" className="logo">
-          <StaticImage src="../assets/images/logo.png" alt="logo" />
+          <StaticImage
+            src="../assets/images/logo.png"
+            alt="logo"
+            className="m-1"
+          />
         </Link>
         <CgMenuRound className="header-menu" onClick={toggleSidebar} />
         <Navlinks styleClass="header-links" />
@@ -39,7 +43,6 @@ const Wrapper = styled.section`
   }
   .logo {
     width: 3rem;
-    padding: 0.5rem;
   }
 
   .header-menu {

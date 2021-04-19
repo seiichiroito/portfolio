@@ -8,9 +8,9 @@ import stackData from "../constants/stackData"
 const Stacks = () => {
   return (
     <Wrapper>
-      <div className="container stacks__container">
+      <div className="container stacks__container py-5">
         <SectionHeading title="Stack" />
-        <ul>
+        <ul className="my-4">
           {stackData.map(stack => (
             <Stack key={stack.id} stack={stack} />
           ))}
@@ -28,14 +28,10 @@ const Wrapper = styled.section`
   /* Color */
   background-color: var(--dark);
   box-shadow: var(--section-shadow);
-  .stacks__container {
-    padding: 3rem 0;
-  }
   ul {
     display: grid;
     grid-template-columns: 1fr;
     gap: 40px;
-    margin: 2rem 0;
     @media (min-width: 768px) {
       grid-template-columns: 1fr 1fr;
     }

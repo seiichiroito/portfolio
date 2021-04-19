@@ -13,25 +13,38 @@ const Contact = () => {
       />
       <Wrapper>
         <div className="container contact__container">
-          <div className="contact">
+          <div className="contact p-3">
             <header className="header">
               <h3>Contact me</h3>
             </header>
             <form
               action="https://formspree.io/f/mqkwkjwo"
               method="POST"
-              className="form"
+              className="form mt-4"
             >
-              <input type="text" placeholder="name" name="name" />
-              <input type="email" placeholder="email" name="email" />
+              <input
+                className="m-3 p-2"
+                type="text"
+                placeholder="name"
+                name="name"
+              />
+              <input
+                className="m-3 p-2"
+                type="email"
+                placeholder="email"
+                name="email"
+              />
               <textarea
                 name="message"
                 rows="5"
                 placeholder="message"
+                className="m-3 p-2"
               ></textarea>
-              <button type="submit">Submit</button>
+              <button className="m-3 py-3" type="submit">
+                Submit
+              </button>
             </form>
-            <footer className="footer">
+            <footer className="footer m-3">
               <p>* I'll response to a given email within 2 ~ 3 days.</p>
               <p>* You can also contact me through below sns.</p>
               <p>
@@ -59,7 +72,6 @@ const Wrapper = styled.section`
     flex: 1;
     max-width: 560px;
     background-color: var(--white);
-    padding: 1rem;
     box-shadow: var(--light-shadow);
   }
   .header {
@@ -70,13 +82,10 @@ const Wrapper = styled.section`
     }
   }
   .form {
-    margin-top: 1.5rem;
     display: flex;
     flex-direction: column;
     input,
     textarea {
-      margin: 1rem;
-      padding: 0.5rem;
       border: 1px solid var(--light);
       &::placeholder {
         color: var(--dark);
@@ -84,10 +93,8 @@ const Wrapper = styled.section`
       }
     }
     button {
-      margin: 1rem;
       color: var(--white);
       background-color: var(--primary-5);
-      padding: 1rem 0;
       border: none;
       &:hover {
         color: var(--white);
@@ -96,7 +103,6 @@ const Wrapper = styled.section`
     }
   }
   .footer {
-    padding: 1rem;
     p {
       color: var(--dark);
       font-size: var(--fz-paragraph);
