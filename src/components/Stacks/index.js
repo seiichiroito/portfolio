@@ -1,9 +1,9 @@
 import React from "react"
 import styled from "styled-components"
 
-import SectionHeading from "./utils/SectionHeading"
+import SectionHeading from "../utils/SectionHeading"
 import Stack from "./Stack"
-import stackData from "../constants/stackData"
+import stackData from "../../constants/stackData"
 
 const Stacks = () => {
   return (

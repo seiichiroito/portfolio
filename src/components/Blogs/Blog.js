@@ -3,7 +3,7 @@ import { Link } from "gatsby"
 import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
-import Underline from "./utils/Underline"
+import Underline from "../utils/Underline"
 const Blog = ({ blog }) => {
   const {
     excerpt,
