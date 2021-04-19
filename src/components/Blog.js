@@ -4,27 +4,29 @@ import styled from "styled-components"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 const Blog = ({ blog }) => {
-  const { title, description, categories, publishedAt, image } = blog
-  const gatsbyImage = getImage(image)
+  const {
+    excerpt,
+    frontmatter: { title, category, date, slug, image },
+  } = blog
+
+  const gatsbyImage = getImage(image.childImageSharp)
 
   return (
     <Wrapper>
-      <Link to="/" className="blog-link">
+      <Link to={`/blog/${slug}`} className="blog-link">
         <div className="hero">
           <GatsbyImage image={gatsbyImage} alt={title} />
         </div>
         <aside>
           <div className="main">
             <h5>{title}</h5>
-            <p>{description}</p>
+            <p>{excerpt}</p>
           </div>
           <div className="footer">
             <ul className="categories">
-              {categories.map((category, index) => {
-                return <li key={index}>{category}</li>
-              })}
+              <li>{category}</li>
             </ul>
-            <p className="date">{publishedAt}</p>
+            <p className="date">{date}</p>
           </div>
         </aside>
       </Link>

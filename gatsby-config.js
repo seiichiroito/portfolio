@@ -16,14 +16,19 @@ module.exports = {
     twitterUsername: "@seiichiro_ito",
     siteUrl: "https://www.seiichiroito.com",
   },
-  // For SEO
   plugins: [
-    `gatsby-plugin-react-helmet`,
+    // For Style
     `gatsby-plugin-styled-components`,
+    // For SEO
+    `gatsby-plugin-react-helmet`,
+    `gatsby-plugin-sitemap`,
+    // For Image
     `gatsby-plugin-image`,
     `gatsby-plugin-sharp`,
     `gatsby-transformer-sharp`,
-    `gatsby-plugin-sitemap`,
+    // For MDX
+    `gatsby-plugin-mdx`,
+    // For Content
     {
       resolve: `gatsby-source-contentful`,
       options: {
@@ -32,6 +37,7 @@ module.exports = {
         accessToken: process.env.CONTENTFUL_API_KEY,
       },
     },
+    // For File system
     {
       resolve: `gatsby-source-filesystem`,
       options: {
@@ -39,6 +45,14 @@ module.exports = {
         path: `${__dirname}/src/assets/images/`,
       },
     },
+    {
+      resolve: `gatsby-source-filesystem`,
+      options: {
+        name: `pages`,
+        path: `${__dirname}/src/posts/`,
+      },
+    },
+    // For Font
     {
       resolve: `gatsby-plugin-webfonts`,
       options: {

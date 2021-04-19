@@ -11,7 +11,7 @@ import Blogs from "../components/Blogs"
 const Home = ({ data }) => {
   const {
     allContentfulProject: { nodes: projects },
-    allContentfulBlog: { nodes: blogs },
+    allMdx: { nodes: blogs },
   } = data
   return (
     <Layout>
@@ -42,16 +42,21 @@ export const query = graphql`
         url
       }
     }
-    allContentfulBlog(limit: 3, sort: { fields: publishedAt, order: DESC }) {
+    allMdx(limit: 3, sort: { fields: frontmatter___date, order: DESC }) {
       nodes {
-        title
-        description
-        categories
         id
-        publishedAt(formatString: "Do MM, YYYY")
-        image {
-          gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+        frontmatter {
+          title
+          category
+          date(formatString: "MMM Do, YYYY")
+          slug
+          image {
+            childImageSharp {
+              gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)
+            }
+          }
         }
+        excerpt
       }
     }
   }

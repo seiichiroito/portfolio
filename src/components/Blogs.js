@@ -10,14 +10,14 @@ const Blogs = ({ blogs, title, showLink }) => {
     <Wrapper>
       <div className="container blogs__container">
         <SectionHeading title={title} />
-        {blogs.length !== 1 ? (
+        {blogs.length == 0 ? (
+          <p className="no-entry">There is no entry yet.</p>
+        ) : (
           <ul className="blog-list">
             {blogs.map(blog => (
               <Blog key={blog.id} blog={blog} />
             ))}
           </ul>
-        ) : (
-          <p className="no-entry">There is no entry yet.</p>
         )}
         {showLink && (
           <Link className="blogs-btn" to="/blog">
