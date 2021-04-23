@@ -35,28 +35,36 @@ const PostTemplate = ({ data }) => {
   return (
     <Layout>
       <Wrapper>
-        <div className="container blog__container py-5">
-          <GatsbyImage image={gatsbyImage} alt={title} className="hero-img" />
-          <div className="blog__info mb-5">
-            <h3 className="mt-3">{title}</h3>
-            <p className="mt-3 px-2 py-1">{date}</p>
-            <ul className="blog__url mt-3">
+        <div className="container blog__container py-12 px-4">
+          <div className="blog__header">
+            <GatsbyImage
+              image={gatsbyImage}
+              alt={title}
+              className="blog__hero-img"
+            />
+            <div className="blog__title">
+              <h3>{title}</h3>
+            </div>
+            <div className="blog__date">
+              <p className="px-2 py-1">{date}</p>
+            </div>
+            <div className="blog__link mt-3">
               {github && (
-                <li>
-                  <a href={github}>
-                    <FaGithubSquare />
-                  </a>
-                </li>
+                <a href={github}>
+                  <FaGithubSquare />
+                </a>
               )}
               {siteUrl && (
-                <li>
-                  <a href={siteUrl}>
-                    <FaExternalLinkAlt />
-                  </a>
-                </li>
+                <a href={siteUrl} className="ml-4">
+                  <FaExternalLinkAlt />
+                </a>
               )}
-            </ul>
-            <div className="blog__table mt-3">
+            </div>
+
+            <div className="blog__overview mt-3">
+              <div className="blog__table-title">
+                <h3>Overview</h3>
+              </div>
               <div className="blog__table-label px-3 py-2">Origin</div>
               <div className="blog__table-content blog__table-content--origin px-3 py-2">
                 <p>{origin}</p>
@@ -104,56 +112,86 @@ const Wrapper = styled.section`
   .blog__container {
     max-width: 1000px;
   }
-  .blog__info {
-    display: flex;
-    flex-direction: column;
-    align-items: flex-end;
-    > h3 {
+
+  .blog__header {
+    display: grid;
+    grid-template-areas:
+      "hero-img"
+      "title"
+      "date"
+      "link"
+      "overview";
+    grid-template-columns: 1fr;
+    gap: 1.5rem;
+    @media screen and (min-width: 768px) {
+      grid-template-columns: 2fr 3fr;
+      grid-template-areas:
+        "title title"
+        ". date"
+        "overview hero-img"
+        "link hero-img";
+    }
+  }
+  .blog__hero-img {
+    grid-area: hero-img;
+  }
+  .blog__title {
+    grid-area: title;
+    h3 {
       text-align: center;
-      align-self: center;
       font-size: var(--fz-heading-3);
       line-height: var(--lh-heading);
     }
-    > p {
-      text-align: center;
+  }
+  .blog__date {
+    grid-area: date;
+    display: flex;
+    justify-content: flex-end;
+    p {
       font-size: var(--fz-paragraph);
       background-color: var(--light);
-      display: inline-block;
       border-radius: var(--radius);
     }
   }
-  .blog__url {
-    display: grid;
-    grid-template-columns: repeat(2, 1fr);
-    gap: 1rem;
-    li {
-      transition: var(--transition);
-      &:hover {
-        transform: scale(1.2);
-      }
-    }
+
+  .blog__link {
+    grid-area: link;
+
+    display: flex;
+    justify-content: flex-end;
     a {
       color: var(--dark);
       font-size: var(--fz-heading-5);
+      transition: var(--transition);
       &:hover {
         color: var(--primary-5);
+        transform: scale(1.2);
       }
     }
   }
 
-  .blog__table {
+  .blog__overview {
+    grid-area: overview;
+
     width: 100%;
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     border: 2px solid var(--dark);
     border-radius: var(--radius);
   }
+  .blog__table-title {
+    grid-column: 1 / -1;
+    h3 {
+      font-size: var(--fz-heading-4);
+      text-align: center;
+    }
+  }
   .blog__table-label {
     border-right: 1px solid var(--dark);
-    border-bottom: 1px solid var(--dark);
+    border-top: 1px solid var(--dark);
   }
   .blog__table-content {
-    border-bottom: 1px solid var(--dark);
+    border-top: 1px solid var(--dark);
     a {
       color: var(--dark);
       font-size: var(--fz-body);
