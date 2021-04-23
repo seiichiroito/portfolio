@@ -8,9 +8,9 @@ import stackData from "../../constants/stackData"
 const Stacks = () => {
   return (
     <Wrapper>
-      <div className="container stacks__container py-5">
+      <div className="container stacks__container py-8">
         <SectionHeading title="Stack" />
-        <ul className="my-4">
+        <ul className="my-8">
           {stackData.map(stack => (
             <Stack key={stack.id} stack={stack} />
           ))}

@@ -8,12 +8,12 @@ import Blog from "./Blog"
 const Blogs = ({ blogs, title, showLink }) => {
   return (
     <Wrapper>
-      <div className="container blogs__container py-5">
+      <div className="container blogs__container py-8">
         <SectionHeading title={title} />
-        {blogs.length <= 1 ? (
-          <p className="no-entry my-4">There is no entry yet.</p>
+        {blogs.length < 1 ? (
+          <p className="no-entry my-8">There is no entry yet.</p>
         ) : (
-          <ul className="blog-list my-4">
+          <ul className="blog-list my-8">
             {blogs.map(blog => (
               <Blog key={blog.id} blog={blog} />
             ))}
@@ -21,7 +21,7 @@ const Blogs = ({ blogs, title, showLink }) => {
         )}
         {showLink && (
           <div className="blogs-btn">
-            <Link className="mx-auto py-2 px-3" to="/blog">
+            <Link className="mx-auto py-2 px-4" to="/blog">
               Blog
             </Link>
           </div>

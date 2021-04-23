@@ -8,7 +8,7 @@ import SocialLinks from "../constants/socialLinks"
 const Hero = () => {
   return (
     <Wrapper>
-      <div className="container hero__container px-4">
+      <div className="container hero__container px-8">
         <div className="main">
           <div className="avatar">
             <StaticImage
@@ -16,7 +16,7 @@ const Hero = () => {
               alt="avatar"
               className="avatar-icon"
             />
-            <Underline styleClass="mt-3" />
+            <Underline styleClass="mt-4" />
           </div>
           <div className="header">
             <h1>I'm Seiichiro</h1>

@@ -20,7 +20,7 @@ const About = () => {
                 className="avatar-icon"
               />
             </div>
-            <div className="main mt-4 mt-md-0 ms-md-4">
+            <div className="main px-4">
               <h3>About Me</h3>
               <Underline />
               <p className="mt-4">
@@ -45,10 +45,9 @@ const Wrapper = styled.section`
     justify-content: center;
   }
   .center {
-    display: flex;
-    flex-direction: column;
+    display: grid;
     @media (min-width: 768px) {
-      flex-direction: row;
+      grid-template-columns: 1fr 1fr;
     }
   }
   .avatar {

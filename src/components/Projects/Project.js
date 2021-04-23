@@ -16,9 +16,9 @@ const Project = ({ project, index }) => {
           <h5>
             {index + 1}. {project.title}
           </h5>
-          <p className="mt-3">{project.description}</p>
+          <p className="mt-4">{project.description}</p>
         </div>
-        <div className="footer mt-3">
+        <div className="footer mt-4">
           <ul className="tags">
             {project.tags.map((tag, index) => {
               return (

@@ -9,16 +9,16 @@ import Project from "./Project"
 const Projects = ({ projects, title, showLink }) => {
   return (
     <Wrapper>
-      <div className="container py-5">
+      <div className="container py-8">
         <SectionHeading title={title} dark />
-        <ul className="project-list my-4">
+        <ul className="project-list my-8">
           {projects.map((project, index) => (
             <Project key={project.id} project={project} index={index} />
           ))}
         </ul>
         {showLink && (
           <div className="projects-btn">
-            <Link className="mx-auto py-2 px-3" to="/projects">
+            <Link className="mx-auto py-2 px-4" to="/projects">
               All Projects
             </Link>
           </div>

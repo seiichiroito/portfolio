@@ -13,23 +13,23 @@ const Contact = () => {
       />
       <Wrapper>
         <div className="container contact__container">
-          <div className="contact p-3">
+          <div className="contact p-4">
             <header className="header">
               <h3>Contact me</h3>
             </header>
             <form
               action="https://formspree.io/f/mqkwkjwo"
               method="POST"
-              className="form mt-4"
+              className="form mt-8"
             >
               <input
-                className="m-3 p-2"
+                className="m-4 p-2"
                 type="text"
                 placeholder="name"
                 name="name"
               />
               <input
-                className="m-3 p-2"
+                className="m-4 p-2"
                 type="email"
                 placeholder="email"
                 name="email"
@@ -38,13 +38,13 @@ const Contact = () => {
                 name="message"
                 rows="5"
                 placeholder="message"
-                className="m-3 p-2"
+                className="m-4 p-2"
               ></textarea>
-              <button className="m-3 py-3" type="submit">
+              <button className="m-4 py-3" type="submit">
                 Submit
               </button>
             </form>
-            <footer className="footer m-3">
+            <footer className="footer m-4">
               <p>* I'll response to a given email within 2 ~ 3 days.</p>
               <p>* You can also contact me through below sns.</p>
               <p>

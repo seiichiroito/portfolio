@@ -3,17 +3,17 @@ import styled from "styled-components"
 
 const Stack = ({ stack }) => {
   return (
-    <Wrapper className="p-3">
+    <Wrapper className="p-4">
       <div className="header">
         {stack.icon}
-        <h5 className="ms-3">{stack.category}</h5>
+        <h5 className="ml-4">{stack.category}</h5>
       </div>
-      <ul className="stack__lists mt-3">
+      <ul className="stack__lists mt-4">
         {stack.languages.map(language => {
           return (
             <li key={language.id}>
               {language.icon}
-              <p className="ms-3">{language.language}</p>
+              <p className="ml-4">{language.language}</p>
             </li>
           )
         })}

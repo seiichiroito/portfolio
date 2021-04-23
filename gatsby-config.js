@@ -19,6 +19,7 @@ module.exports = {
   plugins: [
     // For Style
     `gatsby-plugin-styled-components`,
+    "gatsby-plugin-postcss",
     // For SEO
     `gatsby-plugin-react-helmet`,
     `gatsby-plugin-sitemap`,
