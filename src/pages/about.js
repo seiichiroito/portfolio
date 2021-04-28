@@ -12,7 +12,7 @@ const About = () => {
       <Seo
         title="About"
         description="Information about website author."
-        image="about.png"
+        image="/about.png"
       />
       <Wrapper>
         <div className="container about__container">
