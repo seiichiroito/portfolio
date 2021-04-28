@@ -12,7 +12,7 @@ module.exports = {
     siteTitle: `Seiichiro Portfolio`,
     siteDescription: `This is Seiichiro's Portfolio site`,
     author: `Seiichiro Ito`,
-    image: "/twitter-img.png",
+    image: "twitter-img.png",
     twitterUsername: "@seiichiro_ito",
     siteUrl: "https://www.seiichiroito.com",
   },
