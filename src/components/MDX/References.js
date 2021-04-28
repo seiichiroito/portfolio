@@ -25,7 +25,7 @@ const References = () => {
     <Wrapper className="mt-8">
       {references.map((ref, index) => {
         return (
-          <li key={index} className="px-2 py-1 shadow-md">
+          <li key={index} className="px-2 py-3 md:py-1 shadow-md">
             <a href={ref.url}>
               <img
                 src={`https://s2.googleusercontent.com/s2/favicons?domain_url=${ref.url}`}
