@@ -30,7 +30,6 @@ const SEO = ({ title, description, image }) => {
   const metaTitle = title || siteTitle
 
   const metaImage = image || siteImage
-  console.log(siteUrl)
 
   return (
     <Helmet
@@ -78,11 +77,11 @@ const SEO = ({ title, description, image }) => {
         },
       ]}
     >
-      <script
+      {/* <script
         data-ad-client="ca-pub-2160447206289701"
         async
         src="https://pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"
-      ></script>
+      ></script> */}
     </Helmet>
   )
 }

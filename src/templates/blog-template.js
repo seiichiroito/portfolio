@@ -34,22 +34,6 @@ const PostTemplate = ({ data }) => {
 
   const gatsbyImage = getImage(image.childImageSharp)
 
-  var getFavicon = function () {
-    var favicon = undefined
-    var nodeList = document.getElementsByTagName("link")
-    for (var i = 0; i < nodeList.length; i++) {
-      if (
-        nodeList[i].getAttribute("rel") === "icon" ||
-        nodeList[i].getAttribute("rel") === "shortcut icon"
-      ) {
-        favicon = nodeList[i].getAttribute("href")
-      }
-    }
-    return favicon
-  }
-
-  console.log(getFavicon)
-
   return (
     <Layout>
       <Seo title={date} description={title} image={twitterImage} />
