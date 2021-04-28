@@ -9,7 +9,7 @@ const H1 = ({ children }) => {
 const H2 = ({ children }) => {
   return (
     <HeadingTwo>
-      <h2>{children}</h2>
+      <h2 className="mt-8">{children}</h2>
       <Underline styleClass="mt-1" />
     </HeadingTwo>
   )
