@@ -29,7 +29,9 @@ const SEO = ({ title, description, image }) => {
 
   const metaTitle = title || siteTitle
 
-  const metaImage = image || siteImage
+  const metaImage = `${siteUrl}${image || siteImage}`
+  console.log(siteUrl)
+  console.log(metaImage)
 
   return (
     <Helmet
@@ -73,7 +75,7 @@ const SEO = ({ title, description, image }) => {
         },
         {
           name: "twitter:image",
-          content: siteUrl + metaImage,
+          content: metaImage,
         },
       ]}
     >
