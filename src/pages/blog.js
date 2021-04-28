@@ -18,7 +18,7 @@ const AllBlog = ({ data }) => {
         image="/blog.png"
       />
       <Wrapper>
-        <div className="container blog__container">
+        <div className="container blog__container px-8">
           <Blogs blogs={blogs} title="Blog" />
         </div>
       </Wrapper>

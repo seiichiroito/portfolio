@@ -9,7 +9,7 @@ import Project from "./Project"
 const Projects = ({ projects, title, showLink }) => {
   return (
     <Wrapper>
-      <div className="container py-8">
+      <div className="container py-8 px-8">
         <SectionHeading title={title} dark />
         <ul className="project-list my-8">
           {projects.map((project, index) => (
