@@ -2,7 +2,7 @@
 title: What you need to know when you make Atom Site
 slug: atom-clone
 image: ./images/atom-clone.png
-date: 2021-04-18
+date: 2021-04-28
 category: Clone
 github: https://github.com/seiichiroito/Atom-clone
 siteUrl: https://atom-clone.netlify.app/
@@ -13,4 +13,39 @@ language: HTML, SCSS(CSS)
 pickup: Animation(CSS), Grid(CSS)
 ---
 
-# This is showcase what you can do
+import Cards from "../../components/MDX/Cards.js"
+import References from "../../components/MDX/References.js"
+
+import {
+  codeApp,
+  designApp,
+  productivityApp,
+  deployApp,
+  libraryApp,
+} from "./sample.js"
+
+## App
+
+- Coding
+
+<Cards apps={codeApp} />
+
+- Design
+
+<Cards apps={designApp} />
+
+- Productivity
+
+<Cards apps={productivityApp} />
+
+- Deploy
+
+<Cards apps={deployApp} />
+
+- Library
+
+<Cards apps={libraryApp} />
+
+## Reference
+
+<References />

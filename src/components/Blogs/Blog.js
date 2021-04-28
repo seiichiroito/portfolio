@@ -6,7 +6,6 @@ import { GatsbyImage, getImage } from "gatsby-plugin-image"
 import Underline from "../utils/Underline"
 const Blog = ({ blog }) => {
   const {
-    excerpt,
     frontmatter: { title, category, date, slug, image },
   } = blog
 
@@ -22,7 +21,7 @@ const Blog = ({ blog }) => {
           <div className="main">
             <h5>{title}</h5>
             <Underline styleClass="mt-1" />
-            <p className="mt-3">{excerpt}</p>
+            {/* <p className="mt-3">{excerpt}</p> */}
           </div>
           <div className="footer mt-3">
             <ul className="categories">

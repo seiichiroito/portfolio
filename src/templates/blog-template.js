@@ -32,11 +32,27 @@ const PostTemplate = ({ data }) => {
 
   const gatsbyImage = getImage(image.childImageSharp)
 
+  var getFavicon = function () {
+    var favicon = undefined
+    var nodeList = document.getElementsByTagName("link")
+    for (var i = 0; i < nodeList.length; i++) {
+      if (
+        nodeList[i].getAttribute("rel") === "icon" ||
+        nodeList[i].getAttribute("rel") === "shortcut icon"
+      ) {
+        favicon = nodeList[i].getAttribute("href")
+      }
+    }
+    return favicon
+  }
+
+  console.log(getFavicon)
+
   return (
     <Layout>
       <Wrapper>
-        <div className="container blog__container py-12 px-4">
-          <div className="blog__header">
+        <div className="container blog__container py-12 px-8">
+          <div className="blog__header mb-12">
             <GatsbyImage
               image={gatsbyImage}
               alt={title}
@@ -61,7 +77,7 @@ const PostTemplate = ({ data }) => {
               )}
             </div>
 
-            <div className="blog__overview mt-3">
+            <div className="blog__overview mt-3 md:mt-0">
               <div className="blog__table-title">
                 <h3>Overview</h3>
               </div>

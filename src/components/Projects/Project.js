@@ -3,6 +3,8 @@ import styled from "styled-components"
 import { FaGithubSquare, FaExternalLinkAlt } from "react-icons/fa"
 import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
+import Tags from "../Tags"
+
 const Project = ({ project, index }) => {
   const gatsbyImage = getImage(project.image)
 
@@ -19,15 +21,7 @@ const Project = ({ project, index }) => {
           <p className="mt-4">{project.description}</p>
         </div>
         <div className="footer mt-4">
-          <ul className="tags">
-            {project.tags.map((tag, index) => {
-              return (
-                <li className="p-1" key={index}>
-                  {tag}
-                </li>
-              )
-            })}
-          </ul>
+          <Tags tags={project.tags} />
           <ul className="links">
             <li>
               <a
@@ -76,17 +70,6 @@ const Wrapper = styled.li`
     display: flex;
     justify-content: space-between;
     align-items: center;
-    .tags {
-      display: grid;
-      grid-auto-flow: column;
-      gap: 1rem;
-      li {
-        border: 1px solid var(--primary-5);
-        border-radius: var(--radius);
-        color: var(--primary-5);
-        font-size: var(--fz-paragraph);
-      }
-    }
     .links {
       display: grid;
       gap: 1rem;
