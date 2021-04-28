@@ -8,19 +8,19 @@ const query = graphql`
       siteMetadata {
         siteDescription
         siteTitle
-        image
+        siteImage
         twitterUsername
         siteUrl
       }
     }
   }
 `
-const SEO = ({ title, description }) => {
+const SEO = ({ title, description, image }) => {
   const { site } = useStaticQuery(query)
   const {
     siteDescription,
     siteTitle,
-    image,
+    siteImage,
     twitterUsername,
     siteUrl,
   } = site.siteMetadata
@@ -28,6 +28,9 @@ const SEO = ({ title, description }) => {
   const metaDescription = description || siteDescription
 
   const metaTitle = title || siteTitle
+
+  const metaImage = image || siteImage
+  console.log(siteUrl)
 
   return (
     <Helmet
@@ -71,7 +74,7 @@ const SEO = ({ title, description }) => {
         },
         {
           name: "twitter:image",
-          content: siteUrl + image,
+          content: siteUrl + metaImage,
         },
       ]}
     >

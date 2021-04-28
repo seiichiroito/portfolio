@@ -9,7 +9,11 @@ import Underline from "../components/utils/Underline"
 const About = () => {
   return (
     <Layout>
-      <Seo title="About" description="Information about website author." />
+      <Seo
+        title="About"
+        description="Information about website author."
+        image="about.png"
+      />
       <Wrapper>
         <div className="container about__container">
           <div className="center">

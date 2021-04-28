@@ -8,6 +8,7 @@ import { AiOutlineLink } from "react-icons/ai"
 
 import Layout from "../components/Layout"
 import Evaluation from "../components/utils/Evaluation"
+import Seo from "../components/Seo"
 
 const PostTemplate = ({ data }) => {
   const {
@@ -24,6 +25,7 @@ const PostTemplate = ({ data }) => {
         difficulty,
         language,
         pickup,
+        twitterImage,
       },
     },
   } = data
@@ -50,6 +52,7 @@ const PostTemplate = ({ data }) => {
 
   return (
     <Layout>
+      <Seo title={date} description={title} image={twitterImage} />
       <Wrapper>
         <div className="container blog__container py-12 px-8">
           <div className="blog__header mb-12">
@@ -241,6 +244,7 @@ export const query = graphql`
         difficulty
         language
         pickup
+        twitterImage
         image {
           childImageSharp {
             gatsbyImageData(layout: CONSTRAINED, placeholder: TRACED_SVG)

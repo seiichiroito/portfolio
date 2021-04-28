@@ -15,6 +15,7 @@ const AllBlog = ({ data }) => {
       <Seo
         title="Blog"
         description="A place where my thoughts are summarized."
+        image="blog.png"
       />
       <Wrapper>
         <div className="container blog__container">

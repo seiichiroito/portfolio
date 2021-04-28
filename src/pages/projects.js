@@ -15,6 +15,7 @@ const AllProjects = ({ data }) => {
       <Seo
         title="Projects"
         description="showcase of products made by Seiichiro"
+        image="projects.png"
       />
       <Wrapper>
         <div className="container">

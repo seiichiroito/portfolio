@@ -10,6 +10,7 @@ const Contact = () => {
       <Seo
         title="contact"
         description="Contact form if you want to contact me"
+        image="contact.png"
       />
       <Wrapper>
         <div className="container contact__container">
