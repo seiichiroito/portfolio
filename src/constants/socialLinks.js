@@ -5,7 +5,7 @@ import { FaTwitterSquare, FaGithubSquare, FaLinkedin } from "react-icons/fa"
 const data = [
   {
     id: 1,
-    url: "https://twitter.com/seiichiro_dev",
+    url: "https://twitter.com/seiichiro_ito",
     icon: <FaTwitterSquare className="social-icon" />,
   },
   {
