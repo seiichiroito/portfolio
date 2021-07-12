@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from "uuid"
 import { BsCode } from "react-icons/bs"
 import { AiOutlineCode } from "react-icons/ai"
 import { RiStackLine, RiGatsbyFill } from "react-icons/ri"
-import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs } from "react-icons/fa"
+import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs,FaVuejs } from "react-icons/fa"
 import { SiJavascript, SiJekyll, SiRails, SiReactos } from "react-icons/si"
 import { DiRuby, DiMongodb } from "react-icons/di"
 
@@ -32,8 +32,13 @@ const stackData = [
       },
       {
         id: uuidv4(),
-        language: "React",
+        language: "ReactJS",
         icon: <FaReact />,
+      },
+      {
+        id: uuidv4(),
+        language: "VueJS",
+        icon: <FaVuejs />,
       },
     ],
   },
