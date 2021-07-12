@@ -8,7 +8,7 @@ import { Link } from "gatsby"
 const Header = ({ toggleSidebar }) => {
   return (
     <Wrapper>
-      <div className="container header-container px-4">
+      <div className="container header-container">
         <Link to="/" className="logo">
           <StaticImage
             src="../assets/images/logo.png"

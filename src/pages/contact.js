@@ -13,7 +13,7 @@ const Contact = () => {
         image="/contact.png"
       />
       <Wrapper>
-        <div className="container contact__container">
+        <div className="container contact__container mt-8">
           <div className="contact p-4">
             <header className="header">
               <h3>Contact me</h3>

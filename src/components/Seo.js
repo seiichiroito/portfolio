@@ -31,7 +31,7 @@ const SEO = ({ title, description, image }) => {
 
   const metaImage = `${siteUrl}${image || siteImage}`
 
-  console.log(metaImage)
+  // console.log(metaImage)
   return (
     <Helmet
       title={title}
