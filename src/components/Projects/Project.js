@@ -69,7 +69,6 @@ const Wrapper = styled.li`
   .footer {
     display: flex;
     justify-content: space-between;
-    align-items: center;
     .links {
       display: grid;
       gap: 1rem;

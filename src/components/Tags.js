@@ -17,14 +17,13 @@ const Tags = ({ tags, styleClass }) => {
 
 const Wrapper = styled.ul`
   display: flex;
+  flex-wrap: wrap;
+  gap: 0.8rem;
   li {
     border: 1px solid var(--primary-5);
     border-radius: var(--radius);
     color: var(--primary-5);
     font-size: 12px;
-  }
-  li + li {
-    margin-left: 1rem;
   }
 `
 export default Tags
