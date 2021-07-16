@@ -10,7 +10,7 @@ import Layout from "../components/Layout"
 import Evaluation from "../components/utils/Evaluation"
 import Seo from "../components/Seo"
 
-const PostTemplate = ({ data }) => {
+const PostTemplate = ({ data, location }) => {
   const {
     mdx: {
       body,
@@ -35,7 +35,7 @@ const PostTemplate = ({ data }) => {
   const gatsbyImage = getImage(image.childImageSharp)
 
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo title={date} description={title} image={twitterImage} />
       <Wrapper>
         <div className="container blog__container py-12 px-8">
