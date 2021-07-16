@@ -6,12 +6,12 @@ import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 import Blogs from "../components/Blogs"
 
-const AllBlog = ({ data }) => {
+const AllBlog = ({ data, location }) => {
   const {
     allMdx: { nodes: blogs },
   } = data
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         title="Blog"
         description="A place where my thoughts are summarized."

@@ -4,9 +4,9 @@ import styled from "styled-components"
 import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 
-const Contact = () => {
+const Contact = ({ location }) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         title="contact"
         description="Contact form if you want to contact me"

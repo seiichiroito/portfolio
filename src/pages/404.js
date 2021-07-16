@@ -4,9 +4,9 @@ import styled from "styled-components"
 import { BiArrowBack } from "react-icons/bi"
 
 import Layout from "../components/Layout"
-const Error = () => {
+const Error = ({ location }) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <Wrapper>
         <div className="container error__container">
           <h1>404</h1>

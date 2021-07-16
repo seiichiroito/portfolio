@@ -6,12 +6,12 @@ import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 import Projects from "../components/Projects"
 
-const AllProjects = ({ data }) => {
+const AllProjects = ({ data, location }) => {
   const {
     allContentfulProject: { nodes: projects },
   } = data
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         title="Projects"
         description="showcase of products made by Seiichiro"

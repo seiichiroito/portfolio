@@ -1,7 +1,7 @@
-import React from "react"
+import React, { useContext } from "react"
 import { Link } from "gatsby"
 import styled from "styled-components"
-
+import { LocationContext } from "../components/Layout"
 const data = [
   {
     id: 1,
@@ -11,32 +11,37 @@ const data = [
   {
     id: 2,
     text: "About",
-    url: "/about/",
+    url: "/about",
   },
   {
     id: 3,
     text: "Projects",
-    url: "/projects/",
+    url: "/projects",
   },
   {
     id: 4,
     text: "Blog",
-    url: "/blog/",
+    url: "/blog",
   },
   {
     id: 5,
     text: "Contact",
-    url: "/contact/",
+    url: "/contact",
   },
 ]
 
 const NavLinks = ({ styleClass, toggleSidebar }) => {
+  const path = useContext(LocationContext)
   return (
     <Links className={`${styleClass ? styleClass : ""}`}>
       {data.map(link => {
         return (
           <li key={link.id}>
-            <Link to={link.url} onClick={toggleSidebar}>
+            <Link
+              to={link.url}
+              onClick={toggleSidebar}
+              className={path === link.url ? "current" : ""}
+            >
               {link.text}
             </Link>
           </li>
@@ -66,6 +71,10 @@ const Links = styled.ul`
     text-decoration: none;
     transition: var(--transition);
     &:hover {
+      background-color: var(--primary-5);
+      color: var(--white);
+    }
+    &.current {
       background-color: var(--primary-5);
       color: var(--white);
     }

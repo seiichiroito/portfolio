@@ -8,13 +8,13 @@ import Stacks from "../components/Stacks"
 import Projects from "../components/Projects"
 import Blogs from "../components/Blogs"
 
-const Home = ({ data }) => {
+const Home = ({ data, location }) => {
   const {
     allContentfulProject: { nodes: projects },
     allMdx: { nodes: blogs },
   } = data
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo title="Home" />
       <Hero />
       <Stacks />

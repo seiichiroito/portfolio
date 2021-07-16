@@ -6,9 +6,9 @@ import Layout from "../components/Layout"
 import Seo from "../components/Seo"
 import Underline from "../components/utils/Underline"
 
-const About = () => {
+const About = ({ location }) => {
   return (
-    <Layout>
+    <Layout location={location}>
       <Seo
         title="About"
         description="Information about website author."
