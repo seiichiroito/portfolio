@@ -24,6 +24,7 @@ const Hero = () => {
           </div>
           <SocialLinks styleClass="mt-2" />
         </div>
+
         <div className="sub">
           <div></div>
           <div></div>
