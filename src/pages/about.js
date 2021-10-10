@@ -28,7 +28,7 @@ const About = ({ location }) => {
               <h3>About Me</h3>
               <Underline />
               <p className="mt-4">
-                i'm a university student who like to think about things that
+                i'm a university student who like to think about everyting that
                 aren't generally focused on.
               </p>
             </div>
