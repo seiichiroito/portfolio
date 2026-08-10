@@ -34,7 +34,12 @@ const PostPage = ({ params }) => {
       <MDXRemote
         source={post.content}
         components={mdxComponents}
-        options={{ scope: getScope(params.slug) }}
+        options={{
+          scope: getScope(params.slug),
+          // Posts are trusted content in this repo; v6 blocks JSX expressions
+          // (e.g. `apps={codeApp}`) by default, which our posts rely on.
+          blockJS: false,
+        }}
       />
     </BlogPost>
   )
