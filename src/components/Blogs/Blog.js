@@ -1,27 +1,33 @@
+"use client"
+
 import React from "react"
-import { Link } from "gatsby"
+import Link from "next/link"
+import Image from "next/image"
 import styled from "styled-components"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Underline from "../utils/Underline"
+
 const Blog = ({ blog }) => {
   const {
     frontmatter: { title, category, date, slug, image },
   } = blog
 
-  const gatsbyImage = getImage(image.childImageSharp)
-
   return (
     <Wrapper>
-      <Link to={`/blog/${slug}`} className="blog-link">
+      <Link href={`/blog/${slug}`} className="blog-link">
         <div className="hero">
-          <GatsbyImage image={gatsbyImage} alt={title} />
+          <Image
+            src={image}
+            alt={title}
+            fill
+            sizes="(min-width: 1200px) 33vw, (min-width: 768px) 50vw, 100vw"
+            style={{ objectFit: "cover" }}
+          />
         </div>
         <aside className="p-4">
           <div className="main">
             <h5>{title}</h5>
             <Underline styleClass="mt-1" />
-            {/* <p className="mt-3">{excerpt}</p> */}
           </div>
           <div className="footer mt-3">
             <ul className="categories">
@@ -42,6 +48,7 @@ const Wrapper = styled.li`
     flex-direction: column;
     text-decoration: none;
     transition: var(--transition);
+    flex: 1;
     &:hover {
       transform: scale(1.02);
     }
@@ -51,6 +58,8 @@ const Wrapper = styled.li`
   .hero {
     height: 200px;
     display: flex;
+    position: relative;
+    overflow: hidden;
   }
   aside {
     flex: 1;

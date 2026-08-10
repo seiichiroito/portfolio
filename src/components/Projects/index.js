@@ -1,6 +1,8 @@
+"use client"
+
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import Link from "next/link"
 
 import SectionHeading from "../utils/SectionHeading"
 
@@ -18,7 +20,7 @@ const Projects = ({ projects, title, showLink }) => {
         </ul>
         {showLink && (
           <div className="projects-btn">
-            <Link className="mx-auto py-2 px-4" to="/projects">
+            <Link className="mx-auto py-2 px-4" href="/projects">
               All Projects
             </Link>
           </div>

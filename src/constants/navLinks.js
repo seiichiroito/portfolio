@@ -1,7 +1,10 @@
-import React, { useContext } from "react"
-import { Link } from "gatsby"
+"use client"
+
+import React from "react"
+import Link from "next/link"
+import { usePathname } from "next/navigation"
 import styled from "styled-components"
-import { LocationContext } from "../components/Layout"
+
 const data = [
   {
     id: 1,
@@ -31,14 +34,14 @@ const data = [
 ]
 
 const NavLinks = ({ styleClass, toggleSidebar }) => {
-  const path = useContext(LocationContext)
+  const path = usePathname()
   return (
     <Links className={`${styleClass ? styleClass : ""}`}>
       {data.map(link => {
         return (
           <li key={link.id}>
             <Link
-              to={link.url}
+              href={link.url}
               onClick={toggleSidebar}
               className={path === link.url ? "current" : ""}
             >

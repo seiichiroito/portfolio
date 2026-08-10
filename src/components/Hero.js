@@ -1,9 +1,13 @@
+"use client"
+
 import React from "react"
-import { StaticImage } from "gatsby-plugin-image"
+import Image from "next/image"
 import styled from "styled-components"
 
 import Underline from "./utils/Underline"
 import SocialLinks from "../constants/socialLinks"
+
+import avatar from "../assets/images/avatar.png"
 
 const Hero = () => {
   return (
@@ -11,11 +15,7 @@ const Hero = () => {
       <div className="container hero__container px-8">
         <div className="main">
           <div className="avatar">
-            <StaticImage
-              src="../assets/images/avatar.png"
-              alt="avatar"
-              className="avatar-icon"
-            />
+            <Image src={avatar} alt="avatar" className="avatar-icon" priority />
             <Underline styleClass="mt-4" />
           </div>
           <div className="header">

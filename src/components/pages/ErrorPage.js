@@ -1,22 +1,21 @@
+"use client"
+
 import React from "react"
-import { Link } from "gatsby"
+import Link from "next/link"
 import styled from "styled-components"
 import { BiArrowBack } from "react-icons/bi"
 
-import Layout from "../components/Layout"
-const Error = ({ location }) => {
+const ErrorPage = () => {
   return (
-    <Layout location={location}>
-      <Wrapper>
-        <div className="container error__container">
-          <h1>404</h1>
-          <Link to="/" className="back-btn">
-            <BiArrowBack />
-            Back to home
-          </Link>
-        </div>
-      </Wrapper>
-    </Layout>
+    <Wrapper>
+      <div className="container error__container">
+        <h1>404</h1>
+        <Link href="/" className="back-btn">
+          <BiArrowBack />
+          Back to home
+        </Link>
+      </div>
+    </Wrapper>
   )
 }
 
@@ -50,4 +49,4 @@ const Wrapper = styled.section`
   }
 `
 
-export default Error
+export default ErrorPage

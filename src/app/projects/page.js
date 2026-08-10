@@ -1,0 +1,18 @@
+import AllProjects from "@/components/pages/AllProjects"
+import { getProjects } from "@/lib/contentful"
+import { buildMetadata } from "@/lib/metadata"
+
+export const revalidate = 3600
+
+export const metadata = buildMetadata({
+  title: "Projects",
+  description: "showcase of products made by Seiichiro",
+  image: "/projects.png",
+})
+
+const ProjectsPage = async () => {
+  const projects = await getProjects()
+  return <AllProjects projects={projects} />
+}
+
+export default ProjectsPage

@@ -1,17 +1,26 @@
+"use client"
+
 import React from "react"
+import Image from "next/image"
 import styled from "styled-components"
 import { FaGithubSquare, FaExternalLinkAlt } from "react-icons/fa"
-import { GatsbyImage, getImage } from "gatsby-plugin-image"
 
 import Tags from "../Tags"
 
 const Project = ({ project, index }) => {
-  const gatsbyImage = getImage(project.image)
-
   return (
     <Wrapper>
       <div className="hero">
-        <GatsbyImage image={gatsbyImage} alt={project.title} />
+        {project.image && (
+          <Image
+            src={project.image.url}
+            alt={project.title}
+            width={project.image.width}
+            height={project.image.height}
+            sizes="(min-width: 768px) 400px, 100vw"
+            style={{ width: "100%", height: "auto", objectFit: "cover" }}
+          />
+        )}
       </div>
       <aside className="p-4">
         <div className="main">
@@ -26,14 +35,14 @@ const Project = ({ project, index }) => {
             <li>
               <a
                 href={project.github}
-                target="__blank"
+                target="_blank"
                 rel="noopener noreferrer"
               >
                 <FaGithubSquare />
               </a>
             </li>
             <li>
-              <a href={project.url} target="__blank" rel="noopener noreferrer">
+              <a href={project.url} target="_blank" rel="noopener noreferrer">
                 <FaExternalLinkAlt />
               </a>
             </li>

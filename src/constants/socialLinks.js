@@ -1,3 +1,5 @@
+"use client"
+
 import React from "react"
 import styled from "styled-components"
 import { FaTwitterSquare, FaGithubSquare, FaLinkedin } from "react-icons/fa"
