@@ -3,11 +3,11 @@
 Next.js (App Router) 製のポートフォリオサイト。Vercel でホスティングし、ドメインは Cloudflare Registrar で管理しています。
 
 - 旧構成: Gatsby v3 + Netlify
-- 現構成: Next.js 14 + Vercel + Cloudflare (DNS/Registrar)
+- 現構成: Next.js 16 + Vercel + Cloudflare (DNS/Registrar)
 
 ## 技術スタック
 
-- **Framework**: Next.js 14 (App Router, JavaScript)
+- **Framework**: Next.js 16 (App Router, JavaScript)
 - **Styling**: styled-components v6 (SWC コンパイラ + SSR registry) / Tailwind CSS (ユーティリティのみ)
 - **CMS**: Contentful (Projects)
 - **Blog**: ローカル MDX (`src/posts/`) を next-mdx-remote でレンダリング
