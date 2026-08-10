@@ -53,10 +53,15 @@ typings/
 
 # dotenv environment variable files
 .env*
+!.env.example
 
-# gatsby files
-.cache/
-public
+# next.js files
+.next/
+out/
+next-env.d.ts
+
+# vercel
+.vercel
 
 # Mac files
 .DS_Store

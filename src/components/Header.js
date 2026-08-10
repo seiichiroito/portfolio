@@ -1,20 +1,20 @@
+"use client"
+
 import React from "react"
-import { StaticImage } from "gatsby-plugin-image"
+import Image from "next/image"
+import Link from "next/link"
 import styled from "styled-components"
 import Navlinks from "../constants/navLinks"
 import { CgMenuRound } from "react-icons/cg"
-import { Link } from "gatsby"
+
+import logo from "../assets/images/logo.png"
 
 const Header = ({ toggleSidebar }) => {
   return (
     <Wrapper>
       <div className="container header-container">
-        <Link to="/" className="logo">
-          <StaticImage
-            src="../assets/images/logo.png"
-            alt="logo"
-            className="m-1"
-          />
+        <Link href="/" className="logo">
+          <Image src={logo} alt="logo" className="m-1" />
         </Link>
         <CgMenuRound className="header-menu" onClick={toggleSidebar} />
         <Navlinks styleClass="header-links" />
@@ -43,6 +43,10 @@ const Wrapper = styled.section`
   }
   .logo {
     width: 3rem;
+    img {
+      width: 100%;
+      height: auto;
+    }
   }
 
   .header-menu {

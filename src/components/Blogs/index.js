@@ -1,6 +1,8 @@
+"use client"
+
 import React from "react"
 import styled from "styled-components"
-import { Link } from "gatsby"
+import Link from "next/link"
 
 import SectionHeading from "../utils/SectionHeading"
 import Blog from "./Blog"
@@ -21,7 +23,7 @@ const Blogs = ({ blogs, title, showLink }) => {
         )}
         {showLink && (
           <div className="blogs-btn">
-            <Link className="mx-auto py-2 px-4" to="/blog">
+            <Link className="mx-auto py-2 px-4" href="/blog">
               Blog
             </Link>
           </div>

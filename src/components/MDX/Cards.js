@@ -1,8 +1,11 @@
+"use client"
+
 import React from "react"
 import styled from "styled-components"
 import { FaExternalLinkAlt } from "react-icons/fa"
 
 import Tags from "../Tags"
+
 const Cards = ({ apps }) => {
   return (
     <Wrapper className="mt-4">

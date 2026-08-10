@@ -1,93 +1,92 @@
 // cSpell:ignore Reactos
 import React from "react"
-import { v4 as uuidv4 } from "uuid"
 
 import { BsCode } from "react-icons/bs"
 import { AiOutlineCode } from "react-icons/ai"
 import { RiStackLine, RiGatsbyFill } from "react-icons/ri"
-import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs,FaVuejs } from "react-icons/fa"
-import { SiJavascript, SiJekyll, SiRails, SiReactos } from "react-icons/si"
-import { DiRuby, DiMongodb } from "react-icons/di"
+import { FaHtml5, FaCss3Alt, FaReact, FaNodeJs, FaVuejs } from "react-icons/fa"
+import { SiJavascript, SiJekyll, SiRubyonrails } from "react-icons/si"
+import { DiRuby, DiMongodb, DiReact } from "react-icons/di"
 
 const stackData = [
   {
-    id: uuidv4(),
+    id: "front-end",
     category: "Front End",
     icon: <BsCode />,
     languages: [
       {
-        id: uuidv4(),
+        id: "html",
         language: "HTML",
         icon: <FaHtml5 />,
       },
       {
-        id: uuidv4(),
+        id: "css",
         language: "CSS",
         icon: <FaCss3Alt />,
       },
       {
-        id: uuidv4(),
+        id: "javascript",
         language: "Javascript",
         icon: <SiJavascript />,
       },
       {
-        id: uuidv4(),
+        id: "react",
         language: "ReactJS",
         icon: <FaReact />,
       },
       {
-        id: uuidv4(),
+        id: "vue",
         language: "VueJS",
         icon: <FaVuejs />,
       },
     ],
   },
   {
-    id: uuidv4(),
+    id: "back-end",
     category: "Back End",
     icon: <AiOutlineCode />,
     languages: [
       {
-        id: uuidv4(),
+        id: "node",
         language: "NodeJS",
         icon: <FaNodeJs />,
       },
       {
-        id: uuidv4(),
+        id: "ruby",
         language: "Ruby",
         icon: <DiRuby />,
       },
       {
-        id: uuidv4(),
+        id: "mongodb",
         language: "MongoDB",
         icon: <DiMongodb />,
       },
     ],
   },
   {
-    id: uuidv4(),
+    id: "others",
     category: "Others",
     icon: <RiStackLine />,
     languages: [
       {
-        id: uuidv4(),
+        id: "gatsby",
         language: "Gatsby",
         icon: <RiGatsbyFill />,
       },
       {
-        id: uuidv4(),
+        id: "jekyll",
         language: "Jekyll",
         icon: <SiJekyll />,
       },
       {
-        id: uuidv4(),
+        id: "rails",
         language: "Ruby on Rails",
-        icon: <SiRails />,
+        icon: <SiRubyonrails />,
       },
       {
-        id: uuidv4(),
+        id: "mern",
         language: "MERN",
-        icon: <SiReactos />,
+        icon: <DiReact />,
       },
     ],
   },
