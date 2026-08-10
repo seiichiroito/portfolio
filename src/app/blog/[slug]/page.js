@@ -13,8 +13,9 @@ export const generateStaticParams = () => {
   return getAllPosts().map(post => ({ slug: post.frontmatter.slug }))
 }
 
-export const generateMetadata = ({ params }) => {
-  const post = getPostBySlug(params.slug)
+export const generateMetadata = async ({ params }) => {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
   if (!post) return {}
   const { title, twitterImage } = post.frontmatter
   return buildMetadata({
@@ -24,8 +25,9 @@ export const generateMetadata = ({ params }) => {
   })
 }
 
-const PostPage = ({ params }) => {
-  const post = getPostBySlug(params.slug)
+const PostPage = async ({ params }) => {
+  const { slug } = await params
+  const post = getPostBySlug(slug)
   if (!post) {
     notFound()
   }
@@ -34,7 +36,12 @@ const PostPage = ({ params }) => {
       <MDXRemote
         source={post.content}
         components={mdxComponents}
-        options={{ scope: getScope(params.slug) }}
+        options={{
+          scope: getScope(slug),
+          // Posts are trusted content in this repo; v6 blocks JSX expressions
+          // (e.g. `apps={codeApp}`) by default, which our posts rely on.
+          blockJS: false,
+        }}
       />
     </BlogPost>
   )
