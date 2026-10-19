@@ -1,19 +1,12 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
+  output: "export",
+  trailingSlash: true,
   compiler: {
     styledComponents: true,
   },
   images: {
-    remotePatterns: [
-      {
-        protocol: "https",
-        hostname: "images.ctfassets.net",
-      },
-      {
-        protocol: "https",
-        hostname: "s2.googleusercontent.com",
-      },
-    ],
+    unoptimized: true,
   },
 }
 

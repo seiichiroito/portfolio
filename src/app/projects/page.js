@@ -2,9 +2,8 @@ import AllProjects from "@/components/pages/AllProjects"
 import { getProjects } from "@/lib/contentful"
 import { buildMetadata } from "@/lib/metadata"
 
-export const revalidate = 3600
-
 export const metadata = buildMetadata({
+  path: "/projects",
   title: "Projects",
   description: "showcase of products made by Seiichiro",
   image: "/projects.png",

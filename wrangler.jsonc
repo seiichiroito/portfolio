@@ -1,0 +1,14 @@
+{
+  "$schema": "node_modules/wrangler/config-schema.json",
+  "name": "portfolio",
+  "compatibility_date": "2026-10-19",
+  // 静的アセットへのリクエストは無料・無制限のため、main は置かず out のみ配信する。
+  "assets": {
+    "directory": "./out",
+    "not_found_handling": "404-page",
+  },
+  "routes": [
+    { "pattern": "www.seiichiroito.com", "custom_domain": true },
+    { "pattern": "seiichiroito.com", "custom_domain": true },
+  ],
+}

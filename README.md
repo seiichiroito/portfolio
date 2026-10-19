@@ -1,9 +1,8 @@
 # Seiichiro Portfolio
 
-Next.js (App Router) 製のポートフォリオサイト。Vercel でホスティングし、ドメインは Cloudflare Registrar で管理しています。
+Next.js (App Router) 製のポートフォリオサイト。静的書き出しした `out/` を Cloudflare Workers の静的アセットとして配信し、ドメインは Cloudflare Registrar で管理しています。
 
-- 旧構成: Gatsby v3 + Netlify
-- 現構成: Next.js 16 + Vercel + Cloudflare (DNS/Registrar)
+- 構成: Next.js 16 (静的書き出し) + Cloudflare Workers + Cloudflare (DNS/Registrar)
 
 ## 技術スタック
 
@@ -19,41 +18,55 @@ Next.js (App Router) 製のポートフォリオサイト。Vercel でホステ�
 npm install
 cp .env.example .env.local   # Contentful のキーを設定
 npm run dev                  # http://localhost:3000
-npm run build                # 本番ビルド
+npm run build                # out/ に静的サイトを出力
 ```
+
+Windows PowerShell では `npm` を `npm.cmd` に読み替えてください。
 
 ### 環境変数
 
-| 変数 | 説明 |
-| --- | --- |
-| `CONTENTFUL_SPACE_ID` | Contentful の Space ID |
-| `CONTENTFUL_API_KEY` | Contentful Content Delivery API のアクセストークン |
+| 変数                  | 説明                                               |
+| --------------------- | -------------------------------------------------- |
+| `CONTENTFUL_SPACE_ID` | Contentful の Space ID                             |
+| `CONTENTFUL_API_KEY`  | Contentful Content Delivery API のアクセストークン |
 
 未設定でもビルドは通ります（Projects が空になるだけ）。
 
-## デプロイ (Vercel)
+## デプロイ (Cloudflare Workers)
 
-1. [vercel.com](https://vercel.com) に GitHub アカウントでログイン
-2. **Add New → Project** で `seiichiroito/portfolio` を Import
-3. Framework は **Next.js** として自動検出される（設定変更不要）
-4. **Environment Variables** に `CONTENTFUL_SPACE_ID` と `CONTENTFUL_API_KEY` を追加
-5. **Deploy** を押す
+1. Cloudflare で Workers のデプロイと対象ゾーンのカスタムドメイン設定ができる API Token を発行し、Account ID を確認する。
+2. GitHub リポジトリの **Settings → Secrets and variables → Actions → Repository secrets** に次を登録する（Environment secrets ではなくリポジトリ直下）。
 
-以後は `main` ブランチへの push で自動デプロイされます。プロジェクトページは 1 時間ごとに再検証 (ISR) されるため、Contentful 更新後は最大 1 時間で反映されます。すぐ反映したい場合は Vercel で Redeploy してください。
+   | Secret                  | 用途                 |
+   | ----------------------- | -------------------- |
+   | `CLOUDFLARE_API_TOKEN`  | Wrangler の認証      |
+   | `CLOUDFLARE_ACCOUNT_ID` | デプロイ先アカウント |
+   | `CONTENTFUL_SPACE_ID`   | ビルド時の作品取得   |
+   | `CONTENTFUL_API_KEY`    | ビルド時の作品取得   |
+
+3. `main` に push するか、**Actions → Deploy to Cloudflare Workers → Run workflow** を実行する。
+
+Node.js 24 で `npm ci` → `npm run build` → `npx wrangler deploy` を実行します。Cloudflare の認証情報が空なら、OAuth ログイン待ちに入らずエラーメッセージを出して停止します。Worker スクリプトや OpenNext は使いません。
+
+手元からは Node.js 24 を使い、Contentful の値を `.env.local` に、`CLOUDFLARE_API_TOKEN` と `CLOUDFLARE_ACCOUNT_ID` をシェルの環境変数に設定して実行します。
+
+```bash
+npm run deploy
+```
+
+Contentful の内容はビルド時に確定します。更新後は Actions の手動実行または `npm run deploy` で再デプロイしてください。
 
 ## ドメイン設定 (seiichiroito.com / Cloudflare)
 
-1. Vercel の **Project → Settings → Domains** で `seiichiroito.com` と `www.seiichiroito.com` を追加
-   - `www.seiichiroito.com` を **Primary (Redirect 先)** に設定（サイトの canonical URL が `https://www.seiichiroito.com` のため）
-2. Cloudflare の **DNS → Records** で Vercel が指示するレコードを追加:
-   - `A` レコード: Name `@` → Vercel 表示の IP（例: `76.76.21.21`）
-   - `CNAME` レコード: Name `www` → `cname.vercel-dns.com`
-3. 両レコードとも **Proxy status を「DNS only」（グレー雲）** にする
-   - Cloudflare のプロキシ（オレンジ雲）を有効にすると Vercel 側の SSL 発行・検証と競合します
-4. Cloudflare の **SSL/TLS → Overview** で暗号化モードが **Full (Strict)** になっていることを確認（プロキシを使わない場合は影響しませんが安全のため）
-5. Vercel 側で DNS 検証が通ると自動で Let's Encrypt 証明書が発行されます（数分〜1 時間程度）
+`wrangler.jsonc` の `routes` に両ホストを `custom_domain: true` で登録しています。デプロイ時に Workers のカスタムドメインが DNS レコードと証明書を作成するため、配信先 IP や CNAME を手で追加する必要はありません。
 
-## Netlify からの移行メモ
+初回は Cloudflare の **DNS → Records** で `@` と `www` の旧配信先レコードを確認し、競合するレコードを削除してからデプロイしてください。詳しくは [Cloudflare のカスタムドメイン手順](https://developers.cloudflare.com/workers/configuration/routing/custom-domains/) を参照してください。
 
-- Netlify 側の旧サイトは削除するか、デプロイを止めておく
-- 旧ドメインの DNS 設定（Netlify DNS / 旧レジストラ）は不要
+canonical URL は `https://www.seiichiroito.com` です。両ホストで同じ静的サイトを配信します。
+
+## ツールを置く
+
+- 同じアプリで作る: `src/app/<ツール名>/page.js` を追加すると、`https://www.seiichiroito.com/<ツール名>/` で公開されます。静的書き出しに対応したページにし、ブラウザで動く処理には Client Component を使います。
+- 別に作った静的ツールを置く: ビルド済みの `index.html`・JS・CSS などを `public/<ツール名>/` に配置します。アセットの参照先（base パス）は `/<ツール名>/` に合わせ、同名の App Router ページと重複させないでください。
+
+どちらも追加後に再ビルド・デプロイします。サーバー実行が必要な API や SSR はこの構成では使えません。
