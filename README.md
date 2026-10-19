@@ -8,7 +8,7 @@ Next.js (App Router) 製のポートフォリオサイト。静的書き出し�
 
 - **Framework**: Next.js 16 (App Router, JavaScript)
 - **Styling**: styled-components v6 (SWC コンパイラ + SSR registry) / Tailwind CSS (ユーティリティのみ)
-- **CMS**: Contentful (Projects)
+- **Projects**: ローカル JSON (`src/data/projects.json`)
 - **Blog**: ローカル MDX (`src/posts/`) を next-mdx-remote でレンダリング
 - **Form**: Formspree
 
@@ -16,21 +16,21 @@ Next.js (App Router) 製のポートフォリオサイト。静的書き出し�
 
 ```bash
 npm install
-cp .env.example .env.local   # Contentful のキーを設定
 npm run dev                  # http://localhost:3000
 npm run build                # out/ に静的サイトを出力
 ```
 
 Windows PowerShell では `npm` を `npm.cmd` に読み替えてください。
 
-### 環境変数
+ローカル開発・ビルドに環境変数は不要です。
 
-| 変数                  | 説明                                               |
-| --------------------- | -------------------------------------------------- |
-| `CONTENTFUL_SPACE_ID` | Contentful の Space ID                             |
-| `CONTENTFUL_API_KEY`  | Contentful Content Delivery API のアクセストークン |
+## 作品を足す
 
-未設定でもビルドは通ります（Projects が空になるだけ）。
+1. `public/images/projects/` に幅 1200px 以下の WebP 画像を置く（品質 80 程度）。
+2. `src/data/projects.json` に既存の項目を参考に1件追加する。`id` は一意にし、`image.src` に `/images/projects/<ファイル名>.webp`、`image.width`・`image.height` に画像の実寸を指定する。
+3. `featured: true` にするとトップページにも表示される。表示順は JSON の配列順（既存作品は作成日時の古い順）。
+
+追加後は再ビルド・デプロイしてください。自作ツールを公開したときも同じ手順で掲載できます。
 
 ## デプロイ (Cloudflare Workers)
 
@@ -41,20 +41,18 @@ Windows PowerShell では `npm` を `npm.cmd` に読み替えてください。
    | ----------------------- | -------------------- |
    | `CLOUDFLARE_API_TOKEN`  | Wrangler の認証      |
    | `CLOUDFLARE_ACCOUNT_ID` | デプロイ先アカウント |
-   | `CONTENTFUL_SPACE_ID`   | ビルド時の作品取得   |
-   | `CONTENTFUL_API_KEY`    | ビルド時の作品取得   |
 
 3. `main` に push するか、**Actions → Deploy to Cloudflare Workers → Run workflow** を実行する。
 
 Node.js 24 で `npm ci` → `npm run build` → `npx wrangler deploy` を実行します。Cloudflare の認証情報が空なら、OAuth ログイン待ちに入らずエラーメッセージを出して停止します。Worker スクリプトや OpenNext は使いません。
 
-手元からは Node.js 24 を使い、Contentful の値を `.env.local` に、`CLOUDFLARE_API_TOKEN` と `CLOUDFLARE_ACCOUNT_ID` をシェルの環境変数に設定して実行します。
+手元からは Node.js 24 を使い、`CLOUDFLARE_API_TOKEN` と `CLOUDFLARE_ACCOUNT_ID` をシェルの環境変数に設定して実行します。
 
 ```bash
 npm run deploy
 ```
 
-Contentful の内容はビルド時に確定します。更新後は Actions の手動実行または `npm run deploy` で再デプロイしてください。
+作品データはビルド時に確定します。更新後は Actions の手動実行または `npm run deploy` で再デプロイしてください。
 
 ## ドメイン設定 (seiichiroito.com / Cloudflare)
 

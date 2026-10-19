@@ -20,9 +20,6 @@ jobs:
       - run: npm ci
       - name: Build static site
         run: npm run build
-        env:
-          CONTENTFUL_SPACE_ID: ${{ secrets.CONTENTFUL_SPACE_ID }}
-          CONTENTFUL_API_KEY: ${{ secrets.CONTENTFUL_API_KEY }}
       - name: Deploy static assets
         run: |
           if [ -z "$CLOUDFLARE_API_TOKEN" ]; then
