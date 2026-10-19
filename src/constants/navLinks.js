@@ -34,7 +34,7 @@ const data = [
 ]
 
 const NavLinks = ({ styleClass, toggleSidebar }) => {
-  const path = usePathname()
+  const path = usePathname().replace(/(.)\/$/, "$1")
   return (
     <Links className={`${styleClass ? styleClass : ""}`}>
       {data.map(link => {

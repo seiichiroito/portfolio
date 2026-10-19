@@ -13,7 +13,7 @@ const Project = ({ project, index }) => {
       <div className="hero">
         {project.image && (
           <Image
-            src={project.image.url}
+            src={project.image.src}
             alt={project.title}
             width={project.image.width}
             height={project.image.height}
