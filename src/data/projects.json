@@ -1,0 +1,72 @@
+[
+  {
+    "id": "4SFeHCVBneTkFa6wuaZHDJ",
+    "title": "Theater Promotion",
+    "description": "It's mede for promoting a theater. Those illustrations that are used in page are also made by myself",
+    "tags": ["HTML", "CSS", "Jekyll"],
+    "github": "https://github.com/seiichiroito/snow-white",
+    "url": "https://seiichiroito.github.io/snow-white/",
+    "featured": true,
+    "image": {
+      "src": "/images/projects/4SFeHCVBneTkFa6wuaZHDJ.webp",
+      "width": 1200,
+      "height": 626
+    }
+  },
+  {
+    "id": "hg0vsDAvhKlllORcGXJaL",
+    "title": "Club Homepage",
+    "description": "It's made just for practicing my skill. I was in this club before",
+    "tags": ["HTML", "CSS", "jQuery"],
+    "github": "https://github.com/seiichiroito/BLT",
+    "url": "https://seiichiroito.github.io/BLT/",
+    "featured": false,
+    "image": {
+      "src": "/images/projects/hg0vsDAvhKlllORcGXJaL.webp",
+      "width": 1200,
+      "height": 626
+    }
+  },
+  {
+    "id": "2aJMwm8kI05k1JMgmtmX1G",
+    "title": "Nagoya Sport",
+    "description": "This is redesign version of nagoya sport•recreation system site. you can artificially book a facility in Nagoya city here.",
+    "tags": ["VueJS", "Contentful", "Firebase"],
+    "github": "https://github.com/seiichiroito/vue-nagoyaSport-FE",
+    "url": "https://nagoya-sport.vercel.app/",
+    "featured": true,
+    "image": {
+      "src": "/images/projects/2aJMwm8kI05k1JMgmtmX1G.webp",
+      "width": 1200,
+      "height": 626
+    }
+  },
+  {
+    "id": "2KBW6lRaWNZuOAZpnKkCXh",
+    "title": "Pokedex",
+    "description": "It's fun to play with animation",
+    "tags": ["React", "REST API", "Animation"],
+    "github": "https://github.com/seiichiroito/Pokedex",
+    "url": "https://sei-pokedex.vercel.app/",
+    "featured": true,
+    "image": {
+      "src": "/images/projects/2KBW6lRaWNZuOAZpnKkCXh.webp",
+      "width": 1200,
+      "height": 830
+    }
+  },
+  {
+    "id": "Y6rr1duGMW7bM5IEn9QBl",
+    "title": "Novelog",
+    "description": "Novel × SNS. It's a new type of social network service.",
+    "tags": ["Vue"],
+    "github": "https://github.com/seiichiroito/vite-novelog",
+    "url": "https://novelog.live",
+    "featured": true,
+    "image": {
+      "src": "/images/projects/Y6rr1duGMW7bM5IEn9QBl.webp",
+      "width": 1200,
+      "height": 900
+    }
+  }
+]

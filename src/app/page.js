@@ -2,7 +2,7 @@ import Hero from "@/components/Hero"
 import Stacks from "@/components/Stacks"
 import Projects from "@/components/Projects"
 import Blogs from "@/components/Blogs"
-import { getProjects } from "@/lib/contentful"
+import { getProjects } from "@/lib/projects"
 import { getAllPosts } from "@/lib/posts"
 import { buildMetadata } from "@/lib/metadata"
 

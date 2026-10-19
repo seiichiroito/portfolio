@@ -1,5 +1,5 @@
 import AllProjects from "@/components/pages/AllProjects"
-import { getProjects } from "@/lib/contentful"
+import { getProjects } from "@/lib/projects"
 import { buildMetadata } from "@/lib/metadata"
 
 export const metadata = buildMetadata({
