@@ -19,6 +19,7 @@ export const generateMetadata = async ({ params }) => {
   if (!post) return {}
   const { title, twitterImage } = post.frontmatter
   return buildMetadata({
+    path: `/blog/${slug}`,
     title,
     description: title,
     image: twitterImage,

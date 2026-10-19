@@ -1,16 +1,18 @@
 import { getAllPosts } from "@/lib/posts"
 import { siteMetadata } from "@/lib/site"
 
+export const dynamic = "force-static"
+
 const sitemap = () => {
   const staticPages = ["", "/about", "/projects", "/blog", "/contact"].map(
     route => ({
-      url: `${siteMetadata.siteUrl}${route}`,
+      url: `${siteMetadata.siteUrl}${route}/`,
       lastModified: new Date(),
-    })
+    }),
   )
 
   const posts = getAllPosts().map(post => ({
-    url: `${siteMetadata.siteUrl}/blog/${post.frontmatter.slug}`,
+    url: `${siteMetadata.siteUrl}/blog/${post.frontmatter.slug}/`,
     lastModified: post.frontmatter.rawDate,
   }))
 

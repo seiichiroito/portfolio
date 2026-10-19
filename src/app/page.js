@@ -6,8 +6,6 @@ import { getProjects } from "@/lib/contentful"
 import { getAllPosts } from "@/lib/posts"
 import { buildMetadata } from "@/lib/metadata"
 
-export const revalidate = 3600
-
 export const metadata = buildMetadata({ title: "Home" })
 
 const Home = async () => {
