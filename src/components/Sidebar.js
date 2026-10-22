@@ -7,10 +7,55 @@ import NavLinks from "../constants/navLinks"
 import SocialLinks from "../constants/socialLinks"
 
 const Sidebar = ({ toggleSidebar, isOpen }) => {
+  const panel = React.useRef(null)
+  const closeButton = React.useRef(null)
+  React.useEffect(() => {
+    if (!isOpen) return
+    const opener = document.activeElement
+    // Visibility changes with the opening transition. Focus after it is painted.
+    let focusFrame = requestAnimationFrame(() => {
+      focusFrame = requestAnimationFrame(() => closeButton.current?.focus())
+    })
+    const handleKey = event => {
+      if (event.key === "Escape") {
+        event.preventDefault()
+        toggleSidebar()
+      } else if (event.key === "Tab") {
+        const controls = panel.current.querySelectorAll("button, a[href]")
+        const first = controls[0]
+        const last = controls[controls.length - 1]
+        if (!panel.current.contains(document.activeElement)) {
+          event.preventDefault()
+          ;(event.shiftKey ? last : first).focus()
+        } else if (event.shiftKey && document.activeElement === first) {
+          event.preventDefault()
+          last.focus()
+        } else if (!event.shiftKey && document.activeElement === last) {
+          event.preventDefault()
+          first.focus()
+        }
+      }
+    }
+    document.addEventListener("keydown", handleKey)
+    return () => {
+      cancelAnimationFrame(focusFrame)
+      document.removeEventListener("keydown", handleKey)
+      if (opener instanceof HTMLElement && opener.isConnected) opener.focus()
+    }
+  }, [isOpen, toggleSidebar])
   return (
-    <Wrapper className={`${isOpen ? "show-sidebar" : ""}`}>
-      <button className="close-icon" onClick={toggleSidebar}>
-        <FaTimesCircle />
+    <Wrapper
+      ref={panel}
+      id="mobile-navigation"
+      role="dialog"
+      aria-label="Navigation menu"
+      aria-modal={isOpen ? true : undefined}
+      aria-hidden={!isOpen}
+      inert={!isOpen}
+      className={`${isOpen ? "show-sidebar" : ""}`}
+    >
+      <button ref={closeButton} type="button" className="close-icon" onClick={toggleSidebar} aria-label="Close menu">
+        <FaTimesCircle aria-hidden="true" />
       </button>
       <div className="sidebar-container">
         <NavLinks
@@ -32,6 +77,7 @@ const Wrapper = styled.aside`
   z-index: 999;
   background-color: var(--light);
   opacity: 0;
+  visibility: hidden;
   transition: var(--transition);
   transform: translateX(-100%);
 
@@ -41,6 +87,7 @@ const Wrapper = styled.aside`
   align-items: center;
   &.show-sidebar {
     opacity: 1;
+    visibility: visible;
     transform: translateX(0);
   }
   .close-icon {
@@ -51,9 +98,13 @@ const Wrapper = styled.aside`
     background-color: transparent;
     border-color: transparent;
     cursor: pointer;
-    outline: none;
+    &:focus-visible {
+      outline: 2px solid currentColor;
+      outline-offset: 4px;
+    }
   }
   @media (min-width: 768px) {
+    display: none;
     &.show-sidebar {
       transform: translateX(-100%);
     }
