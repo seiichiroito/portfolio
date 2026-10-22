@@ -37,13 +37,14 @@ const Project = ({ project, index }) => {
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
+                aria-label={`${project.title}: Code on GitHub (opens in a new tab)`}
               >
-                <FaGithubSquare />
+                <FaGithubSquare aria-hidden="true" /> <span>Code</span>
               </a>
             </li>
             <li>
-              <a href={project.url} target="_blank" rel="noopener noreferrer">
-                <FaExternalLinkAlt />
+              <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.title}: View site (opens in a new tab)`}>
+                <FaExternalLinkAlt aria-hidden="true" /> <span>View site</span>
               </a>
             </li>
           </ul>
@@ -77,6 +78,8 @@ const Wrapper = styled.li`
   }
   .footer {
     display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
     justify-content: space-between;
     .links {
       display: grid;
@@ -89,8 +92,12 @@ const Wrapper = styled.li`
         }
       }
       a {
+        display: inline-flex;
+        align-items: center;
+        gap: 0.35rem;
+        white-space: nowrap;
         color: var(--dark);
-        font-size: var(--fz-heading-6);
+        font-size: var(--fz-body);
         &:hover {
           color: var(--primary-5);
         }
