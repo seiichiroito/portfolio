@@ -7,16 +7,19 @@ import { FaTwitterSquare, FaGithubSquare, FaLinkedin } from "react-icons/fa"
 const data = [
   {
     id: 1,
+    name: "X (Twitter) profile",
     url: "https://twitter.com/seiichiro_ito",
     icon: <FaTwitterSquare className="social-icon" />,
   },
   {
     id: 2,
+    name: "GitHub profile",
     url: "https://github.com/seiichiroito",
     icon: <FaGithubSquare className="social-icon" />,
   },
   {
     id: 3,
+    name: "LinkedIn profile",
     url: "https://www.linkedin.com/in/seiichiro-ito-2938861a1/",
     icon: <FaLinkedin className="social-icon" />,
   },
@@ -25,7 +28,7 @@ const data = [
 const socialLinks = data.map(link => {
   return (
     <li className="m-1" key={link.id}>
-      <a href={link.url}>{link.icon}</a>
+      <a href={link.url} aria-label={link.name}><span aria-hidden="true">{link.icon}</span></a>
     </li>
   )
 })
