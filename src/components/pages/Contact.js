@@ -39,10 +39,10 @@ const Contact = () => {
             </button>
           </form>
           <footer className="footer m-4">
-            <p>* I'll response to a given email within 2 ~ 3 days.</p>
-            <p>* You can also contact me through below sns.</p>
+            <p>* I'll respond within 2–3 days.</p>
+            <p>* You can also use the social links below.</p>
             <p>
-              * I use <a href="https://formspree.io/">Formspress</a> for this
+              * I use <a href="https://formspree.io/">Formspree</a> for this
               form.
             </p>
           </footer>

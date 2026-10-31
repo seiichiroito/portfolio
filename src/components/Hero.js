@@ -43,6 +43,7 @@ const Wrapper = styled.section`
 
   /* Size */
   min-height: calc(70vh);
+  overflow: hidden;
 
   /* Color */
   background-color: var(--white);

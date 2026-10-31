@@ -13,6 +13,7 @@ const BlogPost = ({ frontmatter, children }) => {
     date,
     image,
     title,
+    category,
     github,
     siteUrl,
     origin,
@@ -41,19 +42,27 @@ const BlogPost = ({ frontmatter, children }) => {
           </div>
           <div className="blog__title">
             <h3>{title}</h3>
+            {category === "Clone" && (
+              <p className="mt-3">A clone made for practice.</p>
+            )}
           </div>
           <div className="blog__date">
             <p className="px-2 py-1">{date}</p>
           </div>
           <div className="blog__link mt-3">
             {github && (
-              <a href={github}>
-                <FaGithubSquare />
+              <a href={github} title="Source code" aria-label="Source code">
+                <FaGithubSquare aria-hidden="true" />
               </a>
             )}
             {siteUrl && (
-              <a href={siteUrl} className="ml-4">
-                <FaExternalLinkAlt />
+              <a
+                href={siteUrl}
+                className="ml-4"
+                title="View site"
+                aria-label="View site"
+              >
+                <FaExternalLinkAlt aria-hidden="true" />
               </a>
             )}
           </div>
@@ -65,8 +74,8 @@ const BlogPost = ({ frontmatter, children }) => {
             <div className="blog__table-label px-3 py-2">Origin</div>
             <div className="blog__table-content blog__table-content--origin px-3 py-2">
               <p>{origin}</p>
-              <a href={origin}>
-                <AiOutlineLink />
+              <a href={origin} title="Original site" aria-label="Original site">
+                <AiOutlineLink aria-hidden="true" />
               </a>
             </div>
 
@@ -96,6 +105,11 @@ const BlogPost = ({ frontmatter, children }) => {
           </div>
         </div>
         {children}
+        {siteUrl && (
+          <p className="blog__related-project mt-8">
+            <a href={siteUrl}>Related project</a>
+          </p>
+        )}
       </div>
     </Wrapper>
   )
@@ -135,11 +149,24 @@ const Wrapper = styled.section`
   }
   .blog__title {
     grid-area: title;
+    text-align: center;
     h3 {
       text-align: center;
       font-size: var(--fz-heading-3);
       line-height: var(--lh-heading);
     }
+    p {
+      line-height: var(--lh-paragraph);
+    }
+  }
+  .blog__related-project a {
+    color: var(--primary-5);
+    text-decoration: underline;
+    text-underline-offset: 0.2em;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--primary-5);
+    outline-offset: 4px;
   }
   .blog__date {
     grid-area: date;
