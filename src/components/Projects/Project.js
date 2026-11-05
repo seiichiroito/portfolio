@@ -10,8 +10,8 @@ import Tags from "../Tags"
 const Project = ({ project, index }) => {
   return (
     <Wrapper>
-      <div className="hero">
-        {project.image && (
+      {project.image && (
+        <a className="hero" href={project.url}>
           <Image
             src={project.image.src}
             alt={project.title}
@@ -20,30 +20,42 @@ const Project = ({ project, index }) => {
             sizes="(min-width: 768px) 400px, 100vw"
             style={{ width: "100%", height: "auto", objectFit: "cover" }}
           />
-        )}
-      </div>
+        </a>
+      )}
       <aside className="p-4">
         <div className="main">
           <h5>
-            {index + 1}. {project.title}
+            <a href={project.url}>
+              {index + 1}. {project.title}
+            </a>
           </h5>
           <p className="mt-4">{project.description}</p>
         </div>
         <div className="footer mt-4">
-          <Tags tags={project.tags} />
+          <div>
+            <p className="mb-2">Built with:</p>
+            <Tags tags={project.tags} />
+          </div>
           <ul className="links">
             <li>
               <a
                 href={project.github}
                 target="_blank"
                 rel="noopener noreferrer"
-                aria-label={`${project.title}: Code on GitHub (opens in a new tab)`}
+                title="Source code (opens in a new tab)"
+                aria-label={`${project.title}: Source code on GitHub (opens in a new tab)`}
               >
-                <FaGithubSquare aria-hidden="true" /> <span>Code</span>
+                <FaGithubSquare aria-hidden="true" /> <span>Source code</span>
               </a>
             </li>
             <li>
-              <a href={project.url} target="_blank" rel="noopener noreferrer" aria-label={`${project.title}: View site (opens in a new tab)`}>
+              <a
+                href={project.url}
+                target="_blank"
+                rel="noopener noreferrer"
+                title="View site (opens in a new tab)"
+                aria-label={`${project.title}: View site (opens in a new tab)`}
+              >
                 <FaExternalLinkAlt aria-hidden="true" /> <span>View site</span>
               </a>
             </li>
@@ -59,6 +71,13 @@ const Wrapper = styled.li`
   border-radius: var(--radius);
   display: flex;
   flex-direction: column;
+  .hero {
+    display: block;
+  }
+  a:focus-visible {
+    outline: 2px solid var(--primary-5);
+    outline-offset: 4px;
+  }
   aside {
     flex: 1;
     display: flex;
@@ -70,6 +89,11 @@ const Wrapper = styled.li`
     h5 {
       line-height: var(--lh-heading);
       font-size: var(--fz-heading-5);
+      a {
+        color: var(--primary-5);
+        text-decoration: underline;
+        text-underline-offset: 0.2em;
+      }
     }
     p {
       font-size: var(--fz-body);
@@ -82,9 +106,9 @@ const Wrapper = styled.li`
     gap: 1rem;
     justify-content: space-between;
     .links {
-      display: grid;
+      display: flex;
+      flex-wrap: wrap;
       gap: 1rem;
-      grid-auto-flow: column;
       li {
         transition: var(--transition);
         &:hover {

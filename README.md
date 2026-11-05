@@ -16,15 +16,26 @@ Next.js (App Router) 製のポートフォリオサイト。静的書き出し�
 
 ```bash
 npm install
+npx playwright install chromium # 初回のみ、表示テスト用ブラウザーを用意
 npm run dev                  # http://localhost:3000
 npm run build                # out/ に静的サイトを出力
+npm test                     # ビルドして画面のリンク・文言を検証
 ```
 
-Windows PowerShell では `npm` を `npm.cmd` に読み替えてください。
+Windows PowerShell では `npm` を `npm.cmd`、`npx` を `npx.cmd` に読み替えてください。
+
+`npm test` は画面のリンク・文言と、スマートフォンからデスクトップまでの表示を確認します。テスト用サーバーとブラウザーは終了時に自動で閉じます。
 
 ローカル開発・ビルドに環境変数は不要です。
 
 ナビでは、今開いているページのリンクに背景色が付きます。
+
+## サイトの使い方
+
+- ホームと Projects では、作品のタイトルか画像を押すと作品サイトを開きます。「View site」は作品サイト、「Source code」は GitHub を別のタブで開きます。「Built with:」の下は使用技術です。
+- ホームの Latest Blog と Blog 一覧では、下線付きの記事名や画像から記事を開きます。作品を紹介する記事の末尾にある「Related project」は、その作品サイトへのリンクです。
+- 練習用クローンの記事には「A clone made for practice.」と表示します。本家のサイトとは異なります。
+- Contact から問い合わせできます。フォームは Formspree を使い、返信の目安は2〜3日です。SNS アイコンにはリンク先の名前が付き、マウスを置くと表示されます。
 
 ## 作品を足す
 

@@ -10,6 +10,7 @@
   "scripts": {
     "dev": "next dev",
     "build": "next build",
+    "test": "npm run build && node --test tests/*.test.mjs",
     "deploy": "next build && wrangler deploy",
     "format": "prettier --write \"**/*.{js,jsx,ts,tsx,json,md}\""
   },
@@ -24,6 +25,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.20",
+    "playwright": "^1.64.1",
     "postcss": "^8.4.47",
     "prettier": "^3.3.3",
     "tailwindcss": "^3.4.13",

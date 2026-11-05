@@ -28,7 +28,9 @@ const data = [
 const socialLinks = data.map(link => {
   return (
     <li className="m-1" key={link.id}>
-      <a href={link.url} aria-label={link.name}><span aria-hidden="true">{link.icon}</span></a>
+      <a href={link.url} title={link.name} aria-label={link.name}>
+        <span aria-hidden="true">{link.icon}</span>
+      </a>
     </li>
   )
 })

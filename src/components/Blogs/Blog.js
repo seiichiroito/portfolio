@@ -52,6 +52,10 @@ const Wrapper = styled.li`
     &:hover {
       transform: scale(1.02);
     }
+    &:focus-visible {
+      outline: 2px solid var(--primary-5);
+      outline-offset: 4px;
+    }
   }
   box-shadow: var(--dark-shadow);
   border-radius: var(--radius);
@@ -75,6 +79,9 @@ const Wrapper = styled.li`
       line-height: var(--lh-heading);
       font-size: var(--fz-heading-5);
       font-weight: bold;
+      color: var(--primary-7);
+      text-decoration: underline;
+      text-underline-offset: 0.2em;
     }
     p {
       font-size: var(--fz-body);
