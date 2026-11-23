@@ -22,13 +22,13 @@ for (const path of ["", "projects/"]) {
     const visible = projects.filter(project => path || project.featured)
     assert.equal((html.match(/Built with:/g) || []).length, visible.length)
     for (const project of visible) {
-      const siteLinks = anchors.filter(link => link.href === project.url)
+      const siteLinks = anchors.filter(link => link.href === (project.url || project.github))
       assert.ok(
         siteLinks.some(link => link.body.includes(`alt="${project.title}"`)),
       )
       assert.ok(siteLinks.some(link => link.body.endsWith(`${project.title}`)))
       for (const [href, label] of [
-        [project.url, "View site"],
+        ...(project.url ? [[project.url, "View site"]] : []),
         [project.github, "Source code"],
       ]) {
         const link = anchors.find(link => link.href === href && link.title)
@@ -41,6 +41,15 @@ for (const path of ["", "projects/"]) {
     }
   })
 }
+
+test("projects without a live site show no broken View site link", () => {
+  for (const project of projects.filter(project => !project.url)) {
+    const html = page("projects/")
+    assert.ok(
+      !links(html).some(link => link["aria-label"] === `${project.title}: View site (opens in a new tab)`),
+    )
+  }
+})
 
 test("blog cards link to the article from home and the blog list", () => {
   for (const path of ["", "blog/"]) {

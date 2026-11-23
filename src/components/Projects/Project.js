@@ -8,10 +8,12 @@ import { FaGithubSquare, FaExternalLinkAlt } from "react-icons/fa"
 import Tags from "../Tags"
 
 const Project = ({ project, index }) => {
+  // 公開先が無い作品(url なし)は、画像と題名をソースコードへつなぐ
+  const href = project.url || project.github
   return (
     <Wrapper>
       {project.image && (
-        <a className="hero" href={project.url}>
+        <a className="hero" href={href}>
           <Image
             src={project.image.src}
             alt={project.title}
@@ -25,7 +27,7 @@ const Project = ({ project, index }) => {
       <aside className="p-4">
         <div className="main">
           <h5>
-            <a href={project.url}>
+            <a href={href}>
               {index + 1}. {project.title}
             </a>
           </h5>
@@ -48,17 +50,20 @@ const Project = ({ project, index }) => {
                 <FaGithubSquare aria-hidden="true" /> <span>Source code</span>
               </a>
             </li>
-            <li>
-              <a
-                href={project.url}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="View site (opens in a new tab)"
-                aria-label={`${project.title}: View site (opens in a new tab)`}
-              >
-                <FaExternalLinkAlt aria-hidden="true" /> <span>View site</span>
-              </a>
-            </li>
+            {project.url && (
+              <li>
+                <a
+                  href={project.url}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  title="View site (opens in a new tab)"
+                  aria-label={`${project.title}: View site (opens in a new tab)`}
+                >
+                  <FaExternalLinkAlt aria-hidden="true" />{" "}
+                  <span>View site</span>
+                </a>
+              </li>
+            )}
           </ul>
         </div>
       </aside>
