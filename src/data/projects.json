@@ -2,7 +2,7 @@
   {
     "id": "4SFeHCVBneTkFa6wuaZHDJ",
     "title": "Theater Promotion",
-    "description": "It's mede for promoting a theater. Those illustrations that are used in page are also made by myself",
+    "description": "A promotional site for a theater play, with illustrations I drew myself.",
     "tags": ["HTML", "CSS", "Jekyll"],
     "github": "https://github.com/seiichiroito/snow-white",
     "url": "https://seiichiroito.github.io/snow-white/",
@@ -16,7 +16,7 @@
   {
     "id": "hg0vsDAvhKlllORcGXJaL",
     "title": "Club Homepage",
-    "description": "It's made just for practicing my skill. I was in this club before",
+    "description": "A homepage for a club I used to belong to.",
     "tags": ["HTML", "CSS", "jQuery"],
     "github": "https://github.com/seiichiroito/BLT",
     "url": "https://seiichiroito.github.io/BLT/",
@@ -30,7 +30,7 @@
   {
     "id": "2aJMwm8kI05k1JMgmtmX1G",
     "title": "Nagoya Sport",
-    "description": "This is redesign version of nagoya sport•recreation system site. you can artificially book a facility in Nagoya city here.",
+    "description": "A redesign of Nagoya City's sports facility booking site.",
     "tags": ["VueJS", "Contentful", "Firebase"],
     "github": "https://github.com/seiichiroito/vue-nagoyaSport-FE",
     "url": "https://nagoya-sport.vercel.app/",
@@ -44,7 +44,7 @@
   {
     "id": "2KBW6lRaWNZuOAZpnKkCXh",
     "title": "Pokedex",
-    "description": "It's fun to play with animation",
+    "description": "A Pokémon encyclopedia with playful animations.",
     "tags": ["React", "REST API", "Animation"],
     "github": "https://github.com/seiichiroito/Pokedex",
     "url": "https://sei-pokedex.vercel.app/",
@@ -58,7 +58,7 @@
   {
     "id": "Y6rr1duGMW7bM5IEn9QBl",
     "title": "Novelog",
-    "description": "Novel × SNS. It's a new type of social network service.",
+    "description": "A social network for sharing novels.",
     "tags": ["Vue"],
     "github": "https://github.com/seiichiroito/vite-novelog",
     "featured": true,

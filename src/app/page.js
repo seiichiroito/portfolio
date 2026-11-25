@@ -1,22 +1,21 @@
 import Hero from "@/components/Hero"
-import Stacks from "@/components/Stacks"
 import Projects from "@/components/Projects"
-import Blogs from "@/components/Blogs"
 import { getProjects } from "@/lib/projects"
-import { getAllPosts } from "@/lib/posts"
 import { buildMetadata } from "@/lib/metadata"
 
 export const metadata = buildMetadata({ title: "Home" })
 
 const Home = async () => {
-  const projects = await getProjects({ featuredOnly: true })
-  const blogs = getAllPosts({ limit: 3 })
+  const projects = await getProjects()
   return (
     <>
       <Hero />
-      <Stacks />
-      <Projects projects={projects} title="Project" showLink />
-      <Blogs blogs={blogs} title="Latest Blog" showLink />
+      <Projects
+        id="works"
+        projects={projects}
+        title="Works"
+        lead="Websites I have made so far, all in one place."
+      />
     </>
   )
 }

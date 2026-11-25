@@ -9,7 +9,6 @@ Next.js (App Router) 製のポートフォリオサイト。静的書き出し�
 - **Framework**: Next.js 16 (App Router, JavaScript)
 - **Styling**: styled-components v6 (SWC コンパイラ + SSR registry) / Tailwind CSS (ユーティリティのみ)
 - **Projects**: ローカル JSON (`src/data/projects.json`)
-- **Blog**: ローカル MDX (`src/posts/`) を next-mdx-remote でレンダリング
 - **Form**: Formspree
 
 ## 開発
@@ -32,16 +31,15 @@ Windows PowerShell では `npm` を `npm.cmd`、`npx` を `npx.cmd` に読み替
 
 ## サイトの使い方
 
-- ホームと Projects では、作品のタイトルか画像を押すと作品サイトを開きます。「View site」は作品サイト、「Source code」は GitHub を別のタブで開きます。「Built with:」の下は使用技術です。
-- ホームの Latest Blog と Blog 一覧では、下線付きの記事名や画像から記事を開きます。作品を紹介する記事の末尾にある「Related project」は、その作品サイトへのリンクです。
-- 練習用クローンの記事には「A clone made for practice.」と表示します。本家のサイトとは異なります。
+- ホームは自己紹介と「Works」(これまでに作ったサイトの一覧)だけです。作品は、サムネ・サイト名・どんなサイトかの1行を出し、カードを押すと作品サイトを別のタブで開きます(公開先が無い作品は GitHub)。
+- ブログは 2026-11 に過去の記事ごと外しました。また書くときは、git の履歴(`src/posts/`・`src/app/blog/`)から戻してください。
 - Contact から問い合わせできます。フォームは Formspree を使い、返信の目安は2〜3日です。SNS アイコンにはリンク先の名前が付き、マウスを置くと表示されます。
 
 ## 作品を足す
 
 1. `public/images/projects/` に幅 1200px 以下の WebP 画像を置く（品質 80 程度）。
 2. `src/data/projects.json` に既存の項目を参考に1件追加する。`id` は一意にし、`image.src` に `/images/projects/<ファイル名>.webp`、`image.width`・`image.height` に画像の実寸を指定する。
-3. `featured: true` にするとトップページにも表示される。表示順は JSON の配列順（既存作品は作成日時の古い順）。
+3. `description` には「どんなサイトか」を1行で書く(技術や役割は出さない)。ホームと Projects の両方に、JSON の配列順で並ぶ。
 
 追加後は再ビルド・デプロイしてください。自作ツールを公開したときも同じ手順で掲載できます。
 

@@ -2,6 +2,7 @@
 
 import React from "react"
 import Image from "next/image"
+import Link from "next/link"
 import styled from "styled-components"
 
 import Underline from "./utils/Underline"
@@ -23,6 +24,14 @@ const Hero = () => {
             <p className="mt-1">Web Developer</p>
           </div>
           <SocialLinks styleClass="mt-2" />
+          <div className="cta mt-6">
+            <a className="btn" href="#works">
+              See works
+            </a>
+            <Link className="btn ghost" href="/contact">
+              Contact
+            </Link>
+          </div>
         </div>
 
         <div className="sub">
@@ -42,7 +51,8 @@ const Wrapper = styled.section`
   /* Position */
 
   /* Size */
-  min-height: calc(70vh);
+  min-height: 26rem;
+  padding: 3rem 0;
   overflow: hidden;
 
   /* Color */
@@ -53,7 +63,40 @@ const Wrapper = styled.section`
   align-items: center;
 
   @media (min-width: 768px) {
-    min-height: calc(100vh - var(--h-header) - var(--h-footer));
+    min-height: clamp(26rem, 55vh, 34rem);
+  }
+  .cta {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.75rem;
+  }
+  .btn {
+    display: inline-flex;
+    align-items: center;
+    min-height: 44px;
+    padding: 0.5rem 1.25rem;
+    border: 2px solid var(--primary-5);
+    border-radius: var(--radius);
+    background-color: var(--primary-5);
+    color: var(--white);
+    font-size: var(--fz-body);
+    text-decoration: none;
+    transition: var(--transition);
+    &:hover {
+      background-color: var(--primary-6);
+      border-color: var(--primary-6);
+    }
+    &:focus-visible {
+      outline: 2px solid var(--primary-5);
+      outline-offset: 3px;
+    }
+    &.ghost {
+      background-color: transparent;
+      color: var(--primary-5);
+      &:hover {
+        background-color: var(--primary-1);
+      }
+    }
   }
   .hero__container {
     display: grid;
