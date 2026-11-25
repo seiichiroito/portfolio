@@ -3,141 +3,99 @@
 import React from "react"
 import Image from "next/image"
 import styled from "styled-components"
-import { FaGithubSquare, FaExternalLinkAlt } from "react-icons/fa"
 
-import Tags from "../Tags"
-
-const Project = ({ project, index }) => {
-  // 公開先が無い作品(url なし)は、画像と題名をソースコードへつなぐ
+// 作品カード: サムネ・サイト名・どんなサイトか だけを出す。
+// 公開先が無い作品(url なし)は、ソースコードへつなぐ。
+const Project = ({ project }) => {
   const href = project.url || project.github
   return (
     <Wrapper>
-      {project.image && (
-        <a className="hero" href={href}>
-          <Image
-            src={project.image.src}
-            alt={project.title}
-            width={project.image.width}
-            height={project.image.height}
-            sizes="(min-width: 768px) 400px, 100vw"
-            style={{ width: "100%", height: "auto", objectFit: "cover" }}
-          />
-        </a>
-      )}
-      <aside className="p-4">
-        <div className="main">
-          <h5>
-            <a href={href}>
-              {index + 1}. {project.title}
-            </a>
-          </h5>
-          <p className="mt-4">{project.description}</p>
-        </div>
-        <div className="footer mt-4">
-          <div>
-            <p className="mb-2">Built with:</p>
-            <Tags tags={project.tags} />
-          </div>
-          <ul className="links">
-            <li>
-              <a
-                href={project.github}
-                target="_blank"
-                rel="noopener noreferrer"
-                title="Source code (opens in a new tab)"
-                aria-label={`${project.title}: Source code on GitHub (opens in a new tab)`}
-              >
-                <FaGithubSquare aria-hidden="true" /> <span>Source code</span>
-              </a>
-            </li>
-            {project.url && (
-              <li>
-                <a
-                  href={project.url}
-                  target="_blank"
-                  rel="noopener noreferrer"
-                  title="View site (opens in a new tab)"
-                  aria-label={`${project.title}: View site (opens in a new tab)`}
-                >
-                  <FaExternalLinkAlt aria-hidden="true" />{" "}
-                  <span>View site</span>
-                </a>
-              </li>
-            )}
-          </ul>
-        </div>
-      </aside>
+      <a
+        className="card"
+        href={href}
+        target="_blank"
+        rel="noopener noreferrer"
+        aria-label={`${project.title} (opens in a new tab)`}
+      >
+        {project.image && (
+          <span className="thumb">
+            <Image
+              src={project.image.src}
+              alt={project.title}
+              width={project.image.width}
+              height={project.image.height}
+              sizes="(min-width: 1024px) 360px, (min-width: 640px) 50vw, 100vw"
+            />
+          </span>
+        )}
+        <span className="body">
+          <h5>{project.title}</h5>
+          <p>{project.description}</p>
+        </span>
+      </a>
     </Wrapper>
   )
 }
 
 const Wrapper = styled.li`
-  box-shadow: var(--light-shadow);
-  border-radius: var(--radius);
   display: flex;
-  flex-direction: column;
-  .hero {
-    display: block;
-  }
-  a:focus-visible {
-    outline: 2px solid var(--primary-5);
-    outline-offset: 4px;
-  }
-  aside {
+  .card {
     flex: 1;
     display: flex;
     flex-direction: column;
-    justify-content: space-between;
-  }
-  .main {
+    background-color: var(--white);
+    border-radius: var(--radius);
+    box-shadow: var(--light-shadow);
+    overflow: hidden;
     color: var(--dark);
-    h5 {
-      line-height: var(--lh-heading);
-      font-size: var(--fz-heading-5);
-      a {
+    text-decoration: none;
+    transition: var(--transition);
+    &:hover {
+      transform: translateY(-4px);
+      h5 {
         color: var(--primary-5);
-        text-decoration: underline;
-        text-underline-offset: 0.2em;
       }
     }
-    p {
-      font-size: var(--fz-body);
-      line-height: var(--lh-paragraph);
+    &:focus-visible {
+      outline: 2px solid var(--primary-5);
+      outline-offset: 4px;
     }
   }
-  .footer {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 1rem;
-    justify-content: space-between;
-    .links {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 1rem;
-      li {
-        transition: var(--transition);
-        &:hover {
-          transform: scale(1.2);
-        }
-      }
-      a {
-        display: inline-flex;
-        align-items: center;
-        gap: 0.35rem;
-        white-space: nowrap;
-        color: var(--dark);
-        font-size: var(--fz-body);
-        &:hover {
-          color: var(--primary-5);
-        }
-      }
+  .thumb {
+    display: block;
+    aspect-ratio: 16 / 10;
+    overflow: hidden;
+    background-color: var(--primary-1);
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: top;
     }
   }
-  @media (min-width: 768px) {
-    flex-direction: row;
-    .hero {
-      flex: 0 0 400px;
-      display: flex;
+  .body {
+    display: block;
+    padding: 1rem 1.25rem 1.25rem;
+  }
+  h5 {
+    font-size: var(--fz-heading-6);
+    line-height: var(--lh-heading);
+    font-weight: bold;
+    transition: var(--transition);
+  }
+  p {
+    margin-top: 0.5rem;
+    font-size: var(--fz-paragraph);
+    line-height: var(--lh-paragraph);
+  }
+  @media (prefers-reduced-motion: reduce) {
+    .card,
+    h5 {
+      transition: none;
+    }
+    .card:hover {
+      transform: none;
     }
   }
 `

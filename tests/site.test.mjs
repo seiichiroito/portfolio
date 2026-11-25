@@ -16,68 +16,34 @@ const links = html =>
   }))
 
 for (const path of ["", "projects/"]) {
-  test(`${path || "home"}: project images and titles open their sites`, () => {
+  test(`${path || "home"}: every work shows a thumbnail, name and summary that open its site`, () => {
     const html = page(path)
     const anchors = links(html)
-    const visible = projects.filter(project => path || project.featured)
-    assert.equal((html.match(/Built with:/g) || []).length, visible.length)
-    for (const project of visible) {
-      const siteLinks = anchors.filter(link => link.href === (project.url || project.github))
+    assert.doesNotMatch(html, /Built with:|Source code|View site/)
+    for (const project of projects) {
+      const href = project.url || project.github
+      const card = anchors.find(link => link.href === href)
+      assert.ok(card, `${project.title}: card link`)
+      assert.equal(card.target, "_blank")
+      assert.ok(card.rel.includes("noopener"))
+      assert.ok(card.body.includes(`alt="${project.title}"`))
+      assert.ok(card.body.includes(`<h5>${project.title}</h5>`))
       assert.ok(
-        siteLinks.some(link => link.body.includes(`alt="${project.title}"`)),
+        card.body.includes(project.description.replace(/'/g, "&#x27;")) ||
+          card.body.includes(project.description),
       )
-      assert.ok(siteLinks.some(link => link.body.endsWith(`${project.title}`)))
-      for (const [href, label] of [
-        ...(project.url ? [[project.url, "View site"]] : []),
-        [project.github, "Source code"],
-      ]) {
-        const link = anchors.find(link => link.href === href && link.title)
-        assert.ok(link, `${project.title}: ${label}`)
-        assert.ok(link.body.includes(label))
-        assert.ok(link["aria-label"].includes(label))
-        assert.equal(link.target, "_blank")
-        assert.ok(link.rel.includes("noopener"))
-      }
     }
   })
 }
 
-test("projects without a live site show no broken View site link", () => {
-  for (const project of projects.filter(project => !project.url)) {
-    const html = page("projects/")
+test("old blog posts and the blog link are gone", () => {
+  assert.throws(() => page("blog/"))
+  assert.throws(() => page("blog/atom-clone/"))
+  for (const path of ["", "projects/", "about/", "contact/"]) {
     assert.ok(
-      !links(html).some(link => link["aria-label"] === `${project.title}: View site (opens in a new tab)`),
+      !links(page(path)).some(link => link.href?.startsWith("/blog")),
+      path,
     )
-  }
-})
-
-test("blog cards link to the article from home and the blog list", () => {
-  for (const path of ["", "blog/"]) {
-    const link = links(page(path)).find(
-      link => link.href === "/blog/atom-clone/",
-    )
-    assert.ok(link)
-    assert.match(
-      link.body,
-      /<h5>What you need to know when you make Atom Site<\/h5>/,
-    )
-    assert.match(link.body, /<img\b/)
-  }
-})
-
-test("the clone article identifies the demo and ends with a related project", () => {
-  const html = page("blog/atom-clone/")
-  const anchors = links(html)
-  assert.ok(html.includes("A clone made for practice."))
-  const related = anchors.find(link => link.body === "Related project")
-  assert.equal(related?.href, "https://atom-clone.netlify.app/")
-  assert.ok(
-    html.indexOf(">Related project</a>") > html.indexOf(">Reference</h2>"),
-  )
-  for (const label of ["Source code", "View site", "Original site"]) {
-    const link = anchors.find(link => link.title === label)
-    assert.equal(link?.["aria-label"], label)
-    assert.match(link.body, /aria-hidden="true"/)
   }
 })
 
@@ -91,7 +57,7 @@ test("contact spelling and social link names are clear", () => {
     ),
   )
   assert.doesNotMatch(html, /I'll response|Formspress|mailto:/)
-  for (const path of ["", "projects/", "blog/atom-clone/", "contact/"]) {
+  for (const path of ["", "projects/", "contact/"]) {
     const social = links(page(path)).filter(link =>
       ["X (Twitter) profile", "GitHub profile", "LinkedIn profile"].includes(
         link["aria-label"],

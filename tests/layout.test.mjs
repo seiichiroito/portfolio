@@ -71,24 +71,26 @@ test("project cards and links fit on phone, tablet and desktop screens", async (
   }
 })
 
-test("blog titles visibly look like links and open the article", async () => {
+test("home shows the works first and leaves out skills, blog and the closing pitch", async () => {
   const page = await browser.newPage()
   try {
-    for (const path of ["/", "/blog/"]) {
-      await page.goto(`${baseUrl}${path}`)
-      const title = page.locator(".blog-link h5").first()
-      assert.ok(
-        await title.evaluate(element =>
-          getComputedStyle(element).textDecorationLine.includes("underline"),
-        ),
-      )
-      await title.click()
-      await page.waitForURL(`${baseUrl}/blog/atom-clone/`)
-      assert.equal(
-        await page.locator(".blog__title h3").textContent(),
-        "What you need to know when you make Atom Site",
-      )
+    await page.setViewportSize({ width: 1280, height: 900 })
+    await page.goto(`${baseUrl}/`)
+    const firstCard = page.locator("#works .project-list li").first()
+    const box = await firstCard.boundingBox()
+    assert.ok(box && box.y < 900, "a work card is visible in the first screen")
+    const text = await page.locator("main, body").first().innerText()
+    for (const gone of [
+      "Stack",
+      "Front End",
+      "Latest Blog",
+      "Built with",
+      "Source code",
+    ]) {
+      assert.ok(!text.includes(gone), `home should not show ${gone}`)
     }
+    await page.getByRole("link", { name: "See works" }).click()
+    await page.waitForURL(`${baseUrl}/#works`)
   } finally {
     await page.close()
   }
@@ -97,14 +99,7 @@ test("blog titles visibly look like links and open the article", async () => {
 test("public pages do not expose development instructions or an email address", async () => {
   const page = await browser.newPage()
   try {
-    for (const path of [
-      "/",
-      "/projects/",
-      "/blog/",
-      "/blog/atom-clone/",
-      "/about/",
-      "/contact/",
-    ]) {
+    for (const path of ["/", "/projects/", "/about/", "/contact/"]) {
       await page.goto(`${baseUrl}${path}`)
       const text = await page.locator("body").innerText()
       assert.doesNotMatch(
