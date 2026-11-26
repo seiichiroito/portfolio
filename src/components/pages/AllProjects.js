@@ -16,7 +16,7 @@ const AllProjects = ({ projects }) => {
 }
 
 const Wrapper = styled.section`
-  background-color: var(--white);
+  background-color: var(--page);
   min-height: calc(100vh - var(--h-header) - var(--h-footer));
 `
 

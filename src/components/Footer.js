@@ -17,7 +17,7 @@ const Wrapper = styled.section`
   /* Size */
   height: var(--h-footer);
   /* Color */
-  background-color: #d9d9d9;
+  background-color: var(--footer);
 
   /* Child */
   display: flex;

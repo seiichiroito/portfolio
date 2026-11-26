@@ -48,6 +48,32 @@
   --h-footer: 6rem;
 
   --radius: 0.25rem;
+
+  /** 役割の色(ダークで入れ替える) **/
+  --page: var(--white);
+  --card: var(--white);
+  --ink: var(--dark);
+  --accent-ink: var(--primary-5);
+  --soft: var(--primary-1);
+  --deco: var(--primary-8);
+  --sidebar: var(--light);
+  --footer: #d9d9d9;
+  color-scheme: light dark;
+}
+
+/* ダーク: OS の設定に従う。面は明るさの差で分け、線は控えめにする */
+@media (prefers-color-scheme: dark) {
+  :root {
+    --page: #151818;
+    --card: #1f2424;
+    --ink: #e4e8e8;
+    --accent-ink: #8ec3c5;
+    --soft: #1f3536;
+    --deco: #638b8d;
+    --sidebar: #1f2424;
+    --footer: #0f1212;
+    --light-shadow: 0 3px 8px -2px rgba(0, 0, 0, 0.6);
+  }
 }
 
 * {
@@ -56,6 +82,8 @@
 }
 body {
   font-family: var(--font-inter), "Inter", sans-serif;
+  background-color: var(--page);
+  color: var(--ink);
 }
 
 .container {

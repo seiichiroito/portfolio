@@ -86,7 +86,7 @@ const Links = styled.ul`
     a {
       flex: 1;
       text-align: center;
-      color: var(--dark);
+      color: var(--ink);
       font-size: var(--fz-heading-4);
       padding: 1rem 4rem;
       &:hover {

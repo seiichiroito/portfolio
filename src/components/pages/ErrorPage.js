@@ -21,7 +21,7 @@ const ErrorPage = () => {
 
 const Wrapper = styled.section`
   min-height: calc(100vh - var(--h-header) - var(--h-footer));
-  background-color: var(--white);
+  background-color: var(--page);
   display: flex;
   .error__container {
     display: flex;
@@ -30,7 +30,7 @@ const Wrapper = styled.section`
     align-items: center;
   }
   h1 {
-    color: var(--primary-5);
+    color: var(--accent-ink);
     font-size: var(--fz-heading-1);
   }
   .back-btn {
@@ -39,7 +39,7 @@ const Wrapper = styled.section`
     text-decoration: none;
     border: 1px solid var(--primary-5);
     padding: 0.8rem 1rem;
-    color: var(--primary-5);
+    color: var(--accent-ink);
     display: flex;
     align-items: center;
     &:hover {

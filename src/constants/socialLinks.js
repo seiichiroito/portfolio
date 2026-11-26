@@ -50,7 +50,7 @@ const Links = styled.ul`
     }
   }
   a {
-    color: var(--dark);
+    color: var(--ink);
   }
   .social-icon {
     font-size: var(--fz-heading-4);

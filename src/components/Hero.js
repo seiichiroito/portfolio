@@ -56,7 +56,7 @@ const Wrapper = styled.section`
   overflow: hidden;
 
   /* Color */
-  background-color: var(--white);
+  background-color: var(--page);
 
   /* Child */
   display: flex;
@@ -92,9 +92,9 @@ const Wrapper = styled.section`
     }
     &.ghost {
       background-color: transparent;
-      color: var(--primary-5);
+      color: var(--accent-ink);
       &:hover {
-        background-color: var(--primary-1);
+        background-color: var(--soft);
       }
     }
   }
@@ -130,7 +130,7 @@ const Wrapper = styled.section`
       position: absolute;
       width: 100%;
       height: 100%;
-      border: 1px solid var(--primary-8);
+      border: 1px solid var(--deco);
     }
     div:nth-of-type(2) {
       transform: rotate(30deg);
