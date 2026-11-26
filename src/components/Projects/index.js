@@ -25,11 +25,11 @@ const Projects = ({ projects, title, lead, id }) => {
 
 const Wrapper = styled.section`
   /* Color */
-  background-color: var(--white);
+  background-color: var(--page);
   scroll-margin-top: var(--h-header);
 
   .lead {
-    color: var(--dark);
+    color: var(--ink);
     font-size: var(--fz-body);
     line-height: var(--lh-paragraph);
   }

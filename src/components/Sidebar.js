@@ -75,7 +75,7 @@ const Wrapper = styled.aside`
   width: 100%;
   height: 100%;
   z-index: 999;
-  background-color: var(--light);
+  background-color: var(--sidebar);
   opacity: 0;
   visibility: hidden;
   transition: var(--transition);

@@ -43,17 +43,17 @@ const Wrapper = styled.li`
     flex: 1;
     display: flex;
     flex-direction: column;
-    background-color: var(--white);
+    background-color: var(--card);
     border-radius: var(--radius);
     box-shadow: var(--light-shadow);
     overflow: hidden;
-    color: var(--dark);
+    color: var(--ink);
     text-decoration: none;
     transition: var(--transition);
     &:hover {
       transform: translateY(-4px);
       h5 {
-        color: var(--primary-5);
+        color: var(--accent-ink);
       }
     }
     &:focus-visible {
@@ -65,7 +65,7 @@ const Wrapper = styled.li`
     display: block;
     aspect-ratio: 16 / 10;
     overflow: hidden;
-    background-color: var(--primary-1);
+    background-color: var(--soft);
     img {
       display: block;
       width: 100%;

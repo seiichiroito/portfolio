@@ -54,7 +54,7 @@ const Contact = () => {
 
 const Wrapper = styled.section`
   min-height: calc(100vh - var(--h-header) - var(--h-footer));
-  background-color: var(--white);
+  background-color: var(--page);
   display: flex;
   .contact__container {
     display: flex;
@@ -64,14 +64,14 @@ const Wrapper = styled.section`
   .contact {
     flex: 1;
     max-width: 560px;
-    background-color: var(--white);
+    background-color: var(--card);
     box-shadow: var(--light-shadow);
   }
   .header {
     text-align: center;
     h3 {
       font-size: var(--fz-heading-3);
-      color: var(--dark);
+      color: var(--ink);
     }
   }
   .form {
@@ -81,7 +81,7 @@ const Wrapper = styled.section`
     textarea {
       border: 1px solid var(--light);
       &::placeholder {
-        color: var(--dark);
+        color: var(--ink);
         opacity: 0.5;
       }
     }
@@ -97,11 +97,11 @@ const Wrapper = styled.section`
   }
   .footer {
     p {
-      color: var(--dark);
+      color: var(--ink);
       font-size: var(--fz-paragraph);
       line-height: var(--lh-paragraph);
       a {
-        color: var(--primary-5);
+        color: var(--accent-ink);
       }
     }
   }
