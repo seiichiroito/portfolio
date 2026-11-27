@@ -1,9 +1,24 @@
 "use client"
 
-import React from "react"
+import React, { useState } from "react"
 import styled from "styled-components"
 
+import { sendForm } from "@/lib/contactForm.mjs"
+
+const FORM_ACTION = "https://formspree.io/f/mqkwkjwo"
+
 const Contact = () => {
+  const [status, setStatus] = useState("idle")
+
+  const handleSubmit = async event => {
+    event.preventDefault()
+    const form = event.currentTarget
+    setStatus("sending")
+    const result = await sendForm(form.action, new FormData(form))
+    if (result === "sent") form.reset()
+    setStatus(result)
+  }
+
   return (
     <Wrapper>
       <div className="container contact__container mt-8">
@@ -12,31 +27,56 @@ const Contact = () => {
             <h3>Contact me</h3>
           </header>
           <form
-            action="https://formspree.io/f/mqkwkjwo"
+            action={FORM_ACTION}
             method="POST"
             className="form mt-8"
+            onSubmit={handleSubmit}
           >
+            <label className="mx-4 mt-4" htmlFor="contact-name">
+              Name
+            </label>
             <input
-              className="m-4 p-2"
+              id="contact-name"
+              className="mx-4 mt-1 p-2"
               type="text"
-              placeholder="name"
               name="name"
+              autoComplete="name"
+              required
             />
+            <label className="mx-4 mt-4" htmlFor="contact-email">
+              Email
+            </label>
             <input
-              className="m-4 p-2"
+              id="contact-email"
+              className="mx-4 mt-1 p-2"
               type="email"
-              placeholder="email"
               name="email"
+              autoComplete="email"
+              required
             />
+            <label className="mx-4 mt-4" htmlFor="contact-message">
+              Message
+            </label>
             <textarea
+              id="contact-message"
               name="message"
               rows="5"
-              placeholder="message"
-              className="m-4 p-2"
+              className="mx-4 mt-1 p-2"
+              required
             ></textarea>
-            <button className="m-4 py-3" type="submit">
-              Submit
+            <button
+              className="m-4 py-3"
+              type="submit"
+              disabled={status === "sending"}
+            >
+              {status === "sending" ? "Sending…" : "Submit"}
             </button>
+            <p className="status mx-4" role="status" aria-live="polite">
+              {status === "sent" &&
+                "Thanks! Your message was sent. I'll reply within 2–3 days."}
+              {status === "error" &&
+                "Sorry, your message couldn't be sent. Please try again."}
+            </p>
           </form>
           <footer className="footer m-4">
             <p>* I'll respond within 2–3 days.</p>
@@ -77,12 +117,20 @@ const Wrapper = styled.section`
   .form {
     display: flex;
     flex-direction: column;
+    label {
+      color: var(--ink);
+      font-size: var(--fz-paragraph);
+    }
     input,
     textarea {
       border: 1px solid var(--light);
-      &::placeholder {
-        color: var(--ink);
-        opacity: 0.5;
+    }
+    .status {
+      color: var(--ink);
+      font-size: var(--fz-paragraph);
+      line-height: var(--lh-paragraph);
+      &:empty {
+        display: none;
       }
     }
     button {
@@ -92,6 +140,10 @@ const Wrapper = styled.section`
       &:hover {
         color: var(--white);
         background-color: var(--primary-7);
+      }
+      &:disabled {
+        opacity: 0.6;
+        cursor: wait;
       }
     }
   }
