@@ -20,7 +20,7 @@ const About = () => {
             <h3>About Me</h3>
             <Underline />
             <p className="mt-4">
-              i'm a university student who like to think about everyting that
+              I'm a university student who like to think about everything that
               aren't generally focused on.
             </p>
           </div>

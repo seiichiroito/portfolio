@@ -2,6 +2,8 @@ import assert from "node:assert/strict"
 import { readFileSync } from "node:fs"
 import test from "node:test"
 
+import { sendForm } from "../src/lib/contactForm.mjs"
+
 const page = path => readFileSync(`out/${path}index.html`, "utf8")
 const projects = JSON.parse(readFileSync("src/data/projects.json", "utf8"))
 const links = html =>
@@ -69,4 +71,38 @@ test("contact spelling and social link names are clear", () => {
       assert.match(link.body, /aria-hidden="true"/)
     }
   }
+})
+
+test("contact form fields are labelled and required, and the title is Contact", () => {
+  const html = page("contact/")
+  assert.match(html, /<title>Contact[ |<]/)
+  for (const name of ["name", "email", "message"]) {
+    const field = html.match(
+      new RegExp(`<(?:input|textarea)\\b[^>]*name="${name}"[^>]*>`),
+    )?.[0]
+    assert.ok(field, name)
+    assert.match(field, /\brequired=""/, `${name} is required`)
+    const id = field.match(/id="([^"]+)"/)?.[1]
+    assert.ok(id && html.includes(`for="${id}"`), `${name} has a label`)
+  }
+  assert.match(html, /action="https:\/\/formspree\.io\/f\/mqkwkjwo"/)
+  assert.match(html, /role="status"/)
+})
+
+test("sendForm reports sent or error without leaving the page", async () => {
+  const calls = []
+  const ok = async (url, init) => {
+    calls.push({ url, init })
+    return { ok: true }
+  }
+  assert.equal(await sendForm("https://formspree.io/f/x", "body", ok), "sent")
+  assert.equal(calls[0].init.method, "POST")
+  assert.equal(calls[0].init.headers.Accept, "application/json")
+  assert.equal(await sendForm("u", "b", async () => ({ ok: false })), "error")
+  assert.equal(
+    await sendForm("u", "b", async () => {
+      throw new Error("offline")
+    }),
+    "error",
+  )
 })

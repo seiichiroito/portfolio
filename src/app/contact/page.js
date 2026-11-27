@@ -3,7 +3,7 @@ import { buildMetadata } from "@/lib/metadata"
 
 export const metadata = buildMetadata({
   path: "/contact",
-  title: "contact",
+  title: "Contact",
   description: "Contact form if you want to contact me",
   image: "/contact.png",
 })
